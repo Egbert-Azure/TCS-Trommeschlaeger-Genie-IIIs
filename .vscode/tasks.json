@@ -1,0 +1,63 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "assemble",
+      "type": "shell",
+      "command": "pasmo -d ${file} ${fileDirname}/${fileBasenameNoExtension}.com",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": {
+        "owner": "pasmo",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^([a-zA-Z0-9\\-_]+\\.z80):(\\d+):\\s+(?:warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "message": 3
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "clear": true
+      }
+    },
+    {
+      "label": "Build with Hitech C",
+      "type": "shell",
+      "command": "zxc",
+      "args": [
+        "${file}",
+        "-lf"
+      ],
+      "group": "build",
+      "presentation": {
+        "isDefault": true,
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Build with Pasmo",
+      "type": "shell",
+      "command": "pasmo -d ${file} ${fileDirname}/${fileBasenameNoExtension}.com",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ],
+  "presentation": {
+    "reveal": "always",
+    "panel": "new",
+    "clear": true
+  },
+  "workspaceFolder": "${workspaceFolder}"
+}
