@@ -13,7 +13,7 @@ Explore the source code, utilities, and libraries provided in this repository to
 
 Note: This project is intended for educational and historical purposes and may require some technical knowledge to set up and operate.
 
-Contributions and feedback are welcome. Feel free to fork this repository, make enhancements, and submit pull requests to contribute to the development of the TCS Trommeschläger Genie IIIs emulator.
+Contributions and feedback are welcome. Feel free to fork this repository, make enhancements, and submit pull requests to contribute to the development of the TCS Trommeschläger Genie IIIs Holte CP/M.
 
 Start your journey into the world of the TCS Trommeschläger Genie IIIs legacy system today!
 
@@ -36,14 +36,13 @@ The TCS Trommeschläger Genie IIIs is a legacy computer system that originally r
 ## Getting Started
 
 1. Clone the repository:
-
-  git clone https://github.com/your-username/TCS-Trommeschlaeger-Genie-IIIs.git
 2. Build and run the emulator using the provided instructions in the documentation.
 
 3. Explore the various components of the system by examining the source code in the respective directories.
 
 Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
 1. Fork the repository.
 2. Create a new branch:
 git checkout -b my-feature
