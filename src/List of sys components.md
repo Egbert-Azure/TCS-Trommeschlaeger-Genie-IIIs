@@ -1,6 +1,6 @@
-# Generating a Genie IIIs Cp/M 3.0 System
+# Generating a Genie IIIs CP/M 3.0 System
 
-System Components Holte CP/M 3.0
+# System Components Holte CP/M 3.0
 
 ## src/driver.mac:
 
