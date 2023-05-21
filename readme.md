@@ -25,6 +25,8 @@ The TCS Trommeschläger Genie IIIs is a legacy computer system that originally r
 
 - Running the TCS Trommeschläger Genie IIIs Legacy Computer System on Windows with sdltrs
 - Source code for various components of the system:
+  - `SRC/`: System files to https://github.com/Egbert-Azure/TCS-Trommeschlaeger-Genie-IIIs/blob/main/src/List%20of%20sys%20components.md
+ Subfolders
   - `UTILS/`: Utility files for the system
   - `CPMSYS/`: CP/M system files
   - `LIBPLOT/`: C-LIB with graphic functions for use with Hitech C compiler
