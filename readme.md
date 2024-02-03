@@ -19,7 +19,7 @@ Start your journey into the world of the TCS Trommeschläger Genie IIIs legacy s
 
 ## Introduction
 
-The TCS Trommeschläger Genie IIIs is a legacy computer system that originally ran on CP/M. This project provides an emulator to run the Genie IIIs system on Windows using the CP/M-based emulator.
+The TCS Trommeschläger Genie IIIs is a legacy computer system that originally ran on CP/M, Gdos 2.4 or NewDos. This project provides an emulator to run the Genie IIIs system on Windows using the CP/M-based emulator.
 
 ## Features
 
