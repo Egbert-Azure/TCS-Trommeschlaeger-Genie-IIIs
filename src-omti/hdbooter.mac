@@ -13,10 +13,10 @@
 ;*  Thomas Holte			                         Version 1.1  *
 ;*									      *
 ;*									      *
-;*   ge{ndert von Volker Dose, um von einer Harddisk zu booten.               *
+;*   geändert von Volker Dose, um von einer Harddisk zu booten.               *
 ;*	Nov. 1992							      *
 ;*   jetzt mit Initialisierung des Z180- Prozessors, Wait-Zyklen	      *
-;*   und Refreshzeiten m}ssen optimiert und an den Z180 ausgegeben werden.    *
+;*   und Refreshzeiten müssen optimiert und an den Z180 ausgegeben werden.    *
 ;*      Jan. 1993							      *
 ;*									      *
 ;******************************************************************************
@@ -26,8 +26,8 @@
 	ASEG
 	ORG  0000H
 
-;hier erst ein mal ein Verschiebeprogramm, mein Booteprom ist f}r GDOS
-;ausgelegt, und l{dt die ersten 2 Sektoren nach 4200 und springt die dann an
+;hier erst ein mal ein Verschiebeprogramm, mein Booteprom ist für GDOS
+;ausgelegt, und lädt die ersten 2 Sektoren nach 4200 und springt die dann an
 ;der Bootstraploader muss danach nach fc00 geschiftet werden.
 
 	.PHASE 4200H
@@ -106,10 +106,10 @@ LOOP: 	PUSH BC        		;save it
 	LD   A,(SECTOR)
 	INC  A			;increment sector #
 
-;hierzu mu~ gesagt werden, das das COPYSYS leider nciht begreift, wie meine
+;hierzu muß gesagt werden, das das COPYSYS leider nciht begreift, wie meine
 ;Harddisk angelegt ist, also nicht 136 128Byte Einheiten wie im DPB sondern
 ;nur 80 Einheiten wie das Floppyformat. Also muss hier nach 20 Sektoren
-;(entspricht 80 * 128Byte) der n{chste Track angefahren werden
+;(entspricht 80 * 128Byte) der nächste Track angefahren werden
 ; Macht ja auch nix
 
 

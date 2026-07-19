@@ -15,7 +15,7 @@
 ; Jetzt angepasst an Tandon TM 262 HD mit 20 MB . 3.Aug 1993
 ;
 ; Nun an Seagate ST 225 mit 2 Partitionen. Die Charakteristik von
-; Partition 1 wird in LDRBIOHD zum Bootvorgang von der Festplatte ben|tigt
+; Partition 1 wird in LDRBIOHD zum Bootvorgang von der Festplatte benötigt
 ;
 
 	.Z80

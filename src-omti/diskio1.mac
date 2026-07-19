@@ -13,56 +13,56 @@
 ;------------------------------------------------------------------------------
 ; Anmerkungen:
 ;
-; Aus verschiedenen Versionen zusammengelegt und Ansteuerung f}r Hard-Disk
+; Aus verschiedenen Versionen zusammengelegt und Ansteuerung für Hard-Disk
 ; entfernt um Pseudo-Laufwerke zur Formatkonvertirung einzubinden. In den
-; Originaldateien  DISKIO.MAC, TABLES.MAC und DRIVER.MAC sind dir Werte f}r
+; Originaldateien  DISKIO.MAC, TABLES.MAC und DRIVER.MAC sind dir Werte für
 ; das High-Density Format 'FRITZ' als Standartwerte einzutragen. Zur
 ; Portabilitaet waere eine identische Formatdefinition von Vorteil. Beim HD
-; Format habe ich die Formatgr|~e durch Versuche festgelegt. Die Systemspur
-; beinhaltet auf/f}r meine CPU 280 eine Formatangabe, so da~ das Format auf
+; Format habe ich die Formatgröße durch Versuche festgelegt. Die Systemspur
+; beinhaltet auf/für meine CPU 280 eine Formatangabe, so daß das Format auf
 ; meinem anderen Rechner automatisch erkannt wird. Da nicht von High Density
-; gebootet wird k|nnte man die Systemspur auch entfallen lassen. (siehe vorher).
+; gebootet wird könnte man die Systemspur auch entfallen lassen. (siehe vorher).
 ;
 ; Fritz Chwolka, Saarstr.34, 5173 Aldenhoven (02464)8920
 ;
-; Hier m|chte ich mich noch f}r das Entgegenkommen des Herrn Holte bedanken,
+; Hier möchte ich mich noch für das Entgegenkommen des Herrn Holte bedanken,
 ; welcher mir seine Originaldisketten zur Systemerstellung vertrauensvoll
-; zusandte, wobei ich anschlie~end das Systembios bei Herrn Holte erstandt.
+; zusandte, wobei ich anschließend das Systembios bei Herrn Holte erstandt.
 ; Das BIOS darf unter beibehalten der COPYRIGHT - Meldung des Herrn HOLTE
 ; weitergegeben werden.
 ; Die Copyrechte der Firma Digital Research betreff dem CPM+ , hier speziell
-; der ???????.SPR Dateien ist von obigen Aussagen unbeeintr{chtigt. Sie
+; der ???????.SPR Dateien ist von obigen Aussagen unbeeinträchtigt. Sie
 ; sollten auf jeden Fall eine Systemdiskette von Digital Research erworben
 ; haben, um so als Lizensnehmer die SPR-Systemdateien der Firma Digital
 ; Research zu nutzen.
 ; Bei Problemen oder Fragen bin ich unter obiger Adresse immer erreichbar und
-; freue mich f}r jede Zuschrift.
+; freue mich für jede Zuschrift.
 ;
 ; 1989 F.Chwolka
 ;
-; Zus{tzlich rumgepfuscht hat Volker Dose. Zum einen um eine Harddisk
-; mit OMTI-Controller lesen zu k|nnen.
-; Die Harddiskroutine f}r 10MByte Platte mit 2 K|pfen und 612 Cylindern
+; Zusätzlich rumgepfuscht hat Volker Dose. Zum einen um eine Harddisk
+; mit OMTI-Controller lesen zu können.
+; Die Harddiskroutine für 10MByte Platte mit 2 Köpfen und 612 Cylindern
 ; wird jetzt eingebunden. Die Routinen sind die BIOS Sources von
 ; Helmut Bernhardt aus HD2.MAC. Der DPB wurde mit XCPM3.LIB aus
 ; HDDTBL.ASM errechnet.
 ; Ausserdem soll die RAM-Floppy 770Kbyte Speicher bekommen, da bei mir
-; der Helmutsche 1MB-Umbau eingebaut ist. Daf}r war es notwendig die
-; XMOVE-Funktion in DRIVER.MAC zu {ndern.
+; der Helmutsche 1MB-Umbau eingebaut ist. Dafür war es notwendig die
+; XMOVE-Funktion in DRIVER.MAC zu ändern.
 ;
-; Au~erdem noch verschieden Kleinigkeiten in DRIVER.MAC
+; Außerdem noch verschieden Kleinigkeiten in DRIVER.MAC
 ;
 ; Jetzt ist ein 8 Zoll Laufwerk als logisches Laufwerk E: eingetragen.
 ; Format IBM 3740 Standard 77 Tr. SS SD
 ; Zur Zeit ist LW E: wieder raus.
 ;
 ; Die Benutzung des IX-Registers in den Routinen zum Lesen und Schreiben
-; vom/auf das logische Laufwerk P: vertr{gt sich nicht mit dem ZPM3, welchem
+; vom/auf das logische Laufwerk P: verträgt sich nicht mit dem ZPM3, welchem
 ; ich den Vorzug gebe. IX ist also durch IY vertauscht worden.
 ; Das neueste ist jetzt die Aufteilung der HardDisk in zwei logische
 ; Laufwerke C: und D:.					19.6.93
 ;
-; Es ist jetzt eine Tandon Festplatte mit 20 MB Kapazit{t eingebaut, also
+; Es ist jetzt eine Tandon Festplatte mit 20 MB Kapazität eingebaut, also
 ; Einteilung in C: mit 7 MB und D: mit 14 MB.
 ;							15.9.93
 ; Auf Seagate ST 225 mit 2 Partitionen a 10.4 MB eingestellt.
@@ -182,7 +182,7 @@ RAM:	DEFW	0		; No translation table
 	DEFB	0		; Hash bank
 
 ;
-;XDPH f}r Harddisk Partition 1 C:
+;XDPH für Harddisk Partition 1 C:
 	DEFW	hdwrit
 	DEFW	hdread
 	DEFW	FD$LOGIN
@@ -204,7 +204,7 @@ DS0:	DEFW	0		;no translation table
 	DEFB	0		;hash bank
 
 ;
-;XDPH f}r Harddisk Partition 2 D:
+;XDPH für Harddisk Partition 2 D:
 	DEFW	hdwrit
 	DEFW	hdread
 	DEFW	FD$LOGIN
@@ -230,7 +230,7 @@ DS1:	DEFW	0		;no translation table
 
 ;----------------------------------------------------------------
 ; Formatdefinitionen:
-; F}r Sonderformate wird Drive B als relatives laufwerk genutzt.
+; Für Sonderformate wird Drive B als relatives laufwerk genutzt.
 ;----------------------------------------------------------------
 
 ;EJECT
@@ -375,14 +375,14 @@ DPBHD1:	DEFB  	010H,001H   ;SPT= 136      128 Byte records/track
  	DEFB	002H        ;PSH=   2      physical sector shift
 	DEFB	003H        ;PHM=   3      physical record mask
 
-;das hei~t auf Deutsch:
+;das heißt auf Deutsch:
 ;			512 Bytes/Sector
-;			 68 Sectoren/Zylinder (2 K|pfe*17 Sec/Cyl)
+;			 68 Sectoren/Zylinder (2 Köpfe*17 Sec/Cyl)
 ;			615 Cylinder/Laufwerk
-;			4KB Blockgr|~e
-;		       2048 Directory Eintr{ge
+;			4KB Blockgröße
+;		       2048 Directory Einträge
 ;			  2 Reservierte Systemspur
-;		      8000h Flag f}r nonremovable medium
+;		      8000h Flag für nonremovable medium
 
 ;:------------------------------------:
 ;:HARDISK 10MByte Partition 2 D:      :
@@ -401,14 +401,14 @@ DPBHD2:	DEFB  	010H,001H   ;SPT= 136      128 Byte records/track
  	DEFB	002H        ;PSH=   2      physical sector shift
 	DEFB	003H        ;PHM=   3      physical record mask
 
-;das hei~t auf Deutsch:
+;das heißt auf Deutsch:
 ;			512 Bytes/Sector
-;			 68 Sectoren/Zylinder (2 K|pfe*17 Sec/Cyl)
+;			 68 Sectoren/Zylinder (2 Köpfe*17 Sec/Cyl)
 ;			615 Cylinder/Laufwerk
-;			4KB Blockgr|~e
-;		       2048 Directory Eintr{ge
+;			4KB Blockgröße
+;		       2048 Directory Einträge
 ;			307 Reservierte Systemspuren
-;		      8000h Flag f}r nonremovable medium
+;		      8000h Flag für nonremovable medium
 
 
 
@@ -641,7 +641,7 @@ RDFLAG:	DEFS	1
 ;------------------:
 ;virtual disk drive:
 ;
-; Drive Controll Table mu~ f}r Konfig eine feste Adresse haben.
+; Drive Controll Table muß für Konfig eine feste Adresse haben.
 
 DCT	EQU	10D7H		; Drive control table (SYSTAB)
 

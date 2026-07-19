@@ -61,12 +61,12 @@ $SYS1	EQU  0FAH		;port of system byte 1
 ;	JR   NZ,MOVE		;get next byte
 
 	nop			; Nops, damit das File dir selbe
-	nop			; L{nge beh{lt, und um dort die
-	nop			; Einstellung der Waitzyklen f}r
+	nop			; Länge behält, und um dort die
+	nop			; Einstellung der Waitzyklen für
 	nop			; Betrieb mit Z180 zu patchen.
 	nop			;
 	nop			; Kann bei Betrieb mit Z80 aber auch
-	nop			; wieder ge{ndert werden.
+	nop			; wieder geändert werden.
 	nop
 	nop
 	nop
