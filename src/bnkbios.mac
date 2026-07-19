@@ -40,7 +40,7 @@ DC1	EQU  11H		;device control 1
 DC3	EQU  13H		;device control 3
 ESC	EQU  1BH		;escape
 
-CCP	EQU  0100H		;Console Command Processor gets loaded 
+CCP	EQU  0100H		;Console Command Processor gets loaded
 				;into the TPA
 
 	CSEG			;GENCPM puts CSEG stuff in common memory
@@ -66,7 +66,7 @@ CCP	EQU  0100H		;Console Command Processor gets loaded
 	GLOBAL @SECT,@DMA,@DBNK
 
 ;Memory control
-	GLOBAL @CBNK		;current bank 
+	GLOBAL @CBNK		;current bank
 	EXTERNAL ?XMOVE,?MOVE	;select move bank, and block move
 	EXTERNAL ?BANK		;select CPU bank
 	EXTERNAL ?USERF		;call hardware drivers
@@ -142,11 +142,11 @@ BOOT:
 ;====
 
 ;Initial entry point for system startup.
-	LD   SP,BOOT$STACK	
+	LD   SP,BOOT$STACK
 
 	CALL ?INIT		;perform any additional system initialization
-				;and print signon message 
-	
+				;and print signon message
+
 	LD   BC,16*256+0	;init all 16 logical disk drives
 	LD   HL,@DTBL
 D$INIT$LOOP:
@@ -203,7 +203,7 @@ SET$JUMPS:
 	CALL ?BNKSL
 	LD   A,0C3H
 	LD   (0000H),A		;set up jumps in page zero
-	LD   (0005H),A		
+	LD   (0005H),A
 	LD   HL,?WBOOT		;BIOS warm start entry
 	LD   (0001H),HL
 	LD   HL,(@MXTPA)	;BDOS system call entry
@@ -251,7 +251,7 @@ LIST:
 	LD   HL,(@LOVEC)	;fetch list output bit vector
 
 OUT$SCAN:
-	LD   B,0 		;start with device 0 
+	LD   B,0 		;start with device 0
 CO$NEXT:ADD  HL,HL		;shift out next bit
 	JR   NC,NO$OUT$DEVICE
 	PUSH HL			;save the vector
@@ -290,7 +290,7 @@ AUXIN:
 	LD   HL,(@AIVEC)
 
 IN$SCAN:PUSH HL			;save bit vector
-	LD   B,0 
+	LD   B,0
 CI$NEXT:ADD  HL,HL		;shift out next bit
 	LD   A,0		;insure zero a (nonexistent device not ready)
 	CALL C,CISTL		;see if the device has a character
@@ -375,13 +375,13 @@ TABLE10:DEFW -1000,-100,-10,-1,0
 	CALL ?PMSG
 	LD   HL,(@SECT)		;sector number
 	JR   ?PDEC
-	
-	
+
+
 XOFFLIST:
 	DEFB -1,-1,-1,-1	;CTL-S clears to zero
-	DEFB -1,-1,-1,-1	
-	DEFB -1,-1,-1,-1	
-	DEFB -1,-1,-1,-1	
+	DEFB -1,-1,-1,-1
+	DEFB -1,-1,-1,-1
+	DEFB -1,-1,-1,-1
 
 
 *EJECT
@@ -405,7 +405,7 @@ SELDSK:
 	LD   A,C		;save drive select code
 	LD   (@ADRV),A
 	LD   L,C		;create index from drive code
-	LD   H,0		
+	LD   H,0
 	ADD  HL,HL
 	LD   BC,@DTBL		;get pointer to dispatch table
 	ADD  HL,BC
@@ -545,7 +545,7 @@ COS$NEXT:
 	LD   A,0FFH		;all selected were ready, return true
 	RET
 
-;check for output device ready, including optional XON/XOFF support 
+;check for output device ready, including optional XON/XOFF support
 COSTER:	LD   L,B		;make device code 16 bits
 	LD   H,0
 	PUSH HL			;make it in stack
@@ -713,9 +713,9 @@ BNKSEL:
 ;Bank select. Select CPU bank for further execution.
 
 	LD   (@CBNK),A		;remember current bank
-	JP   ?BANK		;and go exit through users 
+	JP   ?BANK		;and go exit through users
 				;physical bank select routine
-  
+
 
 	DSEG
 
@@ -726,7 +726,7 @@ SETBNK:
 ;transfers.
 
 	LD   (@DBNK),A
-	RET 	
+	RET
 
 
 ;error message components:

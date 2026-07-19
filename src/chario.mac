@@ -32,7 +32,7 @@ MAX$DEVICES EQU 5
 
 	CSEG
 
-?CINIT: LD   A,C		
+?CINIT: LD   A,C
 	CP   MAX$DEVICES
 	RET  NC			;illegal device
         SUB  2          	;RS232C interface ?
@@ -48,7 +48,7 @@ MAX$DEVICES EQU 5
 	LD   DE,@CTBL+7		;get baud rate
 	ADD  HL,DE
 	LD   L,(HL)
-	LD   H,0		;get baud rate	
+	LD   H,0		;get baud rate
         LD   DE,SPEED$TABLE     ;point to counter entry
         ADD  HL,DE
         LD   E,(HL)             ;get baud rate factor
@@ -67,12 +67,12 @@ MAX$DEVICES EQU 5
 	DEC  A
 	JR   NZ,RS$1IN
 	LD   B,A		;RS232C interface 0
-	JR   TTY$IN 
+	JR   TTY$IN
 RS$1IN:	DEC  A
 	JR   NZ,NULL$INPUT
 	LD   B,1		;RS232C interface 1
 TTY$IN:	LD   C,8		;function # --> reg. C
-	JP   ?USERF		;receive char from RS232C interface 
+	JP   ?USERF		;receive char from RS232C interface
 CON$IN: LD   C,3                ;function # --> reg. C
 	JP   ?USERF           	;wait for keyboard character
 
@@ -184,4 +184,3 @@ SPEED$TABLE:
 	DEFB 0,2,3,15,4,14,13,6,11,10,7,0,9,0,8,0
 
 	END
-	

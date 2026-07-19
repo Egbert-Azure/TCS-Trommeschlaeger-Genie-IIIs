@@ -12,7 +12,7 @@
 *   Thomas Holte			                         Version 2.0  *
 * 									      *
 ******************************************************************************/
-  
+
 /* #define SASI	*/		/* must be defined if Xebec controller used */
 
 #include <stdio.h>
@@ -82,9 +82,9 @@ _main ()
 	 } *sd = buf3;			/* pointer to spare directory	   */
 
   	 int  sdc = 0;			/* bad sector counter 		   */
-	
+
          FILE *CPM3_SYS;		/* file containing complete CP/M 3
-				           system			   */ 
+				           system			   */
   	 char print[REC_SIZE];		/* CPM3.SYS print record	   */
   	 char *CPM3;			/* pointer to system buffer	   */
   	 char *tCPM3;			/* temporary pointer		   */
@@ -111,11 +111,11 @@ _main ()
 	   	  char bnk_top_page;    /* top page plus one, at which the
 				           banked portion of CP/M 3 is to
 				           be loaded top down		    */
-	   	  char bnk_length;	/* length in pages of the banked 
+	   	  char bnk_length;	/* length in pages of the banked
 				           portion of CP/M 3		    */
 	   	  char *entry;		/* address of CP/M 3 cold boot
 				      	   entry point			    */
-	   	  char filler[122];	
+	   	  char filler[122];
 	        } HEADER;
 
 
@@ -133,7 +133,7 @@ _main ()
   disp_config ();
 
   /* restore drive */
-  restore (); 
+  restore ();
 
   /* try to read second sector */
   if (!system(16, 0x10, 1, buf2, 0) && streq(&buf2[20], &buf4[20]))
@@ -195,11 +195,11 @@ _main ()
 
       format_track (surface, cylinder, buf1);
 
-      /* write worst case bit pattern */	
-      for (secno = 0; secno < SECCOUNT; secno++) 
+      /* write worst case bit pattern */
+      for (secno = 0; secno < SECCOUNT; secno++)
 	system (17, 0x10, secno, buf2, track);
-    } 	  
-	  
+    }
+
 #endif
 
   /* verifying */
@@ -211,7 +211,7 @@ _main ()
 
     for (secno = 0; secno < SECCOUNT; secno++)
       if (system(16, 0x10, secno, buf2, track))
-	if (track && sdc < 255 && sdc < SECLEN / sizeof *sd)	  
+	if (track && sdc < 255 && sdc < SECLEN / sizeof *sd)
 	{
 	  sd[sdc].track  = track;
 	  sd[sdc].sector = secno;
@@ -219,7 +219,7 @@ _main ()
 	  printf ("%s %04d", prmpt6, track );
 	}
 	else fatal_error ();
-  } 
+  }
 
   /* write spare directory */
   if (system(17, 0x10, 0, buf3, 0) || system(17, 0x10, 1, buf4, 0))
@@ -229,14 +229,14 @@ _main ()
   memset (buf2, 0xE5, SECLEN);
 
   printf (prmpt7);
-   
+
   for (i = SECCOUNT; i < DIRSIZE / 4 / (SECLEN / REC_SIZE) + SECCOUNT; i++)
   {
     track = i / SECCOUNT;
     secno = i % SECCOUNT;
 
     /* calc offset */
-    for (j = 0;; j++) if (sd[j].track  > track) break; 
+    for (j = 0;; j++) if (sd[j].track  > track) break;
       		 else if (sd[j].track == track) if (sd[j].sector > secno)
 						  break;
 
@@ -258,7 +258,7 @@ _main ()
   /* read header record and print record */
   read (CPM3_SYS, &HEADER, REC_SIZE);
   read (CPM3_SYS, print  , REC_SIZE);
-  
+
   /* get memory for CPM3.SYS data */
   if (!(CPM3 = malloc(size = (HEADER.res_length + HEADER.bnk_length) * 0x100)))
   {
@@ -280,7 +280,7 @@ _main ()
   }
 
   /* set maximum block count */
-  pDPB->DSM = (long)(SECCOUNT * (TRKCOUNT - pDPB->OFF) - sdc) 
+  pDPB->DSM = (long)(SECCOUNT * (TRKCOUNT - pDPB->OFF) - sdc)
 	    * (SECLEN / REC_SIZE) / (pDPB->BLM + 1) - 1;
 
   /* write system */
@@ -293,7 +293,7 @@ _main ()
   /* write header record and print record */
   write (CPM3_SYS, &HEADER, REC_SIZE);
   write (CPM3_SYS, print  , REC_SIZE);
-  
+
   /* write system in reversed order */
   for (tCPM3 = CPM3 + size - REC_SIZE; tCPM3 >= CPM3; tCPM3 -= REC_SIZE)
     write (CPM3_SYS, tCPM3, REC_SIZE);
@@ -319,7 +319,7 @@ _main ()
   close (CPM3_SYS);
 }
 
- 
+
 static restore ()
 {
 
@@ -352,7 +352,7 @@ static restore ()
     outp (WPORT0, ((char *)&drive_characteristics)[i++]);
   }
   getstat ();
-  
+
   /* test drive ready */
   do uptask (TEST); while (getstat());
 
@@ -412,7 +412,7 @@ static uptask (cmd)
 	   	  unsigned block;
 		  char     interleave;
 		  char     control_field;
-		} command = {0, 0, 0, SKEW, 
+		} command = {0, 0, 0, SKEW,
 #if STEP_RATE
 					    0 	/* 3msec step rate */
 #else
@@ -424,15 +424,15 @@ static uptask (cmd)
   while (inp(RPORT1) & 2);
   outp (WPORT0, 1);
   do outp (WPORT2, 0); while (!(inp(RPORT1) & 2));
- 
+
   /* output command */
   command.opcode = cmd;
   while (!(inp(RPORT1) & 1));
-  for (i = 0; i < sizeof command; i++) outp (WPORT0, ((char *)&command)[i]);  
+  for (i = 0; i < sizeof command; i++) outp (WPORT0, ((char *)&command)[i]);
 }
 
 #else
-  
+
 static uptask (surface, cylinder)
   char surface;
   int cylinder;
@@ -455,8 +455,8 @@ static char getstat ()
   while (!(inp(RPORT1) & 1));
   error = inp(RPORT0);
   while (!(inp(RPORT1) & 1));
-  inp (RPORT0);  
-  
+  inp (RPORT0);
+
   return error;
 }
 
@@ -478,7 +478,7 @@ static char *search (pa, pb, na, nb)
       b = pb;
       for (i = 1; i < na; i++) if (*++a != *b++) goto endwhile;
       return --pb;
-    }	
+    }
     endwhile:;
   }
   return NULL;

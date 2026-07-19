@@ -16,11 +16,11 @@
 ;*   ge{ndert von Volker Dose, um von einer Harddisk zu booten.               *
 ;*	Nov. 1992							      *
 ;*   jetzt mit Initialisierung des Z180- Prozessors, Wait-Zyklen	      *
-;*   und Refreshzeiten m}ssen optimiert und an den Z180 ausgegeben werden.    * 
+;*   und Refreshzeiten m}ssen optimiert und an den Z180 ausgegeben werden.    *
 ;*      Jan. 1993							      *
 ;*									      *
 ;******************************************************************************
-  
+
 	.Z80
 
 	ASEG
@@ -35,18 +35,18 @@
 	LD	A,0C4H		;muss so sein
 	OUT	($SYS1),A	;
 	LD	SP,41E0H
-	
+
 	ld	HL,begin	;alles was nach FC00 assembliert wird
 	ld	de,0fc00h
 	ld	bc,01ffh	;schad ja nix
 	ldir
 	jp	0FC00h		;und den 'WAHREN' Lader anspringen.
-	
-begin:	
-	
+
+begin:
+
 	.DEPHASE
-			
-	
+
+
 	.PHASE 0FC00H
 
 ;load CP/M-system:
@@ -108,7 +108,7 @@ LOOP: 	PUSH BC        		;save it
 
 ;hierzu mu~ gesagt werden, das das COPYSYS leider nciht begreift, wie meine
 ;Harddisk angelegt ist, also nicht 136 128Byte Einheiten wie im DPB sondern
-;nur 80 Einheiten wie das Floppyformat. Also muss hier nach 20 Sektoren 
+;nur 80 Einheiten wie das Floppyformat. Also muss hier nach 20 Sektoren
 ;(entspricht 80 * 128Byte) der n{chste Track angefahren werden
 ; Macht ja auch nix
 
@@ -118,7 +118,7 @@ LOOP: 	PUSH BC        		;save it
 	JR   NZ,NXTSEC		;jump if not
 	ld   a,1
 	ld   (trk),a		;step in one track
-	XOR  A			;reset sector #	
+	XOR  A			;reset sector #
 NXTSEC: LD   (SECTOR),A		;store sector #
 	POP  BC			;restore sector counter
      	DJNZ LOOP		;read next sector
@@ -127,14 +127,14 @@ NXTSEC: LD   (SECTOR),A		;store sector #
 
 	LD   HL,3505H          	;source address      --> reg. HL
 	LD   DE,0FE05H		;destination address --> reg. DE
-	LD   BC,1FBH            ;byte count	     --> reg. BC	
+	LD   BC,1FBH            ;byte count	     --> reg. BC
 	LDIR
 
 ;move CP/M loader to the right place:
 
 	LD   HL,3700H          	;source address      --> reg. HL
 	LD   DE,4400H		;destination address --> reg. DE
-	LD   BC,0C80H           ;byte count	     --> reg. BC	
+	LD   BC,0C80H           ;byte count	     --> reg. BC
 	LDIR
 	JP   4400H		;jump into CP/M loader
 
@@ -179,7 +179,7 @@ hdread:	xor	a
 hds0:	res	0,(hl)
 hdsok:	or	c
 	ld	(sect),a
-	
+
 rdsect:	di
 	ld	bc,0508h
 	call	hdscmd
@@ -194,7 +194,7 @@ rd1$:	call	wcr
 	ld	hl,(BUFFER)
 	ld	c,hdport
 	jr	rd_dat
-	
+
 hdrdlp:	call	wcr
 	call	wcr
 	in	a,(hdstat)
@@ -204,7 +204,7 @@ hdrdlp:	call	wcr
 	jr	nz,hdrdlp
 rd_dat:	ini
 	jr	hdrdlp
-	
+
 termcmd:
 	ld	c,8
 tr$:	ld	b,0
@@ -217,7 +217,7 @@ tr$1:	call	wcr
 	jr	tr$3
 	dec	c
 	jr	nz,tr$
-	
+
 tr$2:	call	wcr
 	call	wcr
 	in	a,(hdport)
@@ -236,7 +236,7 @@ cylind:	db	0
 bcount:	db	1
 termin:	db	2
 
-	
+
 wcr:	push	bc
 	ld	b,0
 wcr1:	in	a,(hdstat)
@@ -245,8 +245,8 @@ wcr1:	in	a,(hdstat)
 	djnz	wcr1
 wcr2:	pop	bc
 	ret
-	
-	
+
+
 hdscmd:	in	a,(hdstat)
 	cp	0c0h
 	jr	z,hdc_id
@@ -260,17 +260,17 @@ hdc_id:	out	(hdsel),a
 	out	(hdport),a
 	ld	c,40h
 nxbhd:	call	wcr
-	call	wcr	
+	call	wcr
 	outi
 	jr	nz,nxbhd
 	ret
-								
+
 DELAY:	dec	bc
 	ld	a,b
 	or	c
 	jr	nz,delay
 	ret
-		
+
 
 
 trk:	dw	0000		;current track #
@@ -280,13 +280,13 @@ BUFFER:	DEFW 0000               ;current load address
 
 *EJECT
 ERROR:  ld	hl,cfield	;der Verschiebebefehl sichert den
-	ld	de,8000h	;letzten Parameterblock zum 
+	ld	de,8000h	;letzten Parameterblock zum
 	ld	bc,5		;Begucken an eine sichere Stelle
 	ldir
 	LD   A,11000100B	;enable memory mapped I/O
 	OUT  ($SYS1),A		;write system byte 1
 
-	LD   HL,MSG		;^message		--> reg. HL	
+	LD   HL,MSG		;^message		--> reg. HL
         LD   DE,3C00H		;^first screen position --> reg. DE
 	LD   BC,COPYRGT-MSG	;length of message	--> reg. BC
 	LDIR			;output error message
@@ -304,13 +304,13 @@ BUZZON:	NOP			;little delay for lower frequency
 	JR   NZ,BUZZON		;wait `til end of buzz
 	POP  BC			;restore wait counter
 	DJNZ BEEP		;turn on buzzer eleven times
-	
+
 	LD   BC,8000
         CALL DELAY
 
 	POP  BC			;restore beep counter
 	DJNZ ALARM		;beep 100 times
-	JR   $			;hang up		
+	JR   $			;hang up
 
 MSG:	DEFM 'HDBOOTER HARD-DISK ERROR'
 
@@ -326,4 +326,3 @@ LDRBYTE:DEFB 2
 
 
 	END
-

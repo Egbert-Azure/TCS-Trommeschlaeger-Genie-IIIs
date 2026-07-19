@@ -9,11 +9,11 @@
 *  Thomas Holte			                         	 Version 1.0  *
 * 									      *
 ******************************************************************************/
-  
+
 /* characteristics of Syquest 306 Winchester drive */
 #define STEP_RATE     0		/* buffered step 	    */
 #define WPCOMP_CYL 1020		/* no write precompensation */
-#define SECLEN     1024		/* sector length       	    */   
+#define SECLEN     1024		/* sector length       	    */
 #define SECSIZE    0x40		/* size bits for controller */
 #define SECCOUNT      9		/* sectors per track   	    */
 #define TRKCOUNT    612		/* track count         	    */

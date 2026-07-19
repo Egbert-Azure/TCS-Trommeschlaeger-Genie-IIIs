@@ -9,12 +9,12 @@
 *  Thomas Holte			                         	 Version 1.0  *
 * 									      *
 ******************************************************************************/
-  
+
 /* characteristics of Seagate 412 Winchester drive */
 #define STEP_RATE     3		/* 3 msec step rate   	    */
 #define WPCOMP_CYL   64		/* starting cylinder of
 				   write precompensation    */
-#define SECLEN     1024		/* sector length       	    */   
+#define SECLEN     1024		/* sector length       	    */
 #define SECSIZE    0x40		/* size bits for controller */
 #define SECCOUNT      9		/* sectors per track   	    */
 #define TRKCOUNT   1224		/* track count         	    */

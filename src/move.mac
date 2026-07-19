@@ -47,7 +47,7 @@ IBANK:	DEFB 0			;flag for interbank move
 	LD   B,C		;byte count --> reg. B
 	LD   C,15		;function # --> reg. C
 	CALL ?USERF		;perform interbank move
-	POP  BC			;restore byte count	
+	POP  BC			;restore byte count
 	ADD  HL,BC		;calc new source address
 	EX   DE,HL
 	ADD  HL,BC		;calc new destination address
@@ -140,4 +140,3 @@ SAVESP: DEFS 2			;temporary memory for stack pointer
 PORT:	DEFS 1			;temporary memory for system byte 0
 
 	END
-	

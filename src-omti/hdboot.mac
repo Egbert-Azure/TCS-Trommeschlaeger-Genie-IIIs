@@ -35,7 +35,7 @@ BDOS	EQU  0005H
 
 	DSEG			;init done from banked memory
 
-?INIT:  LD   HL,8000H           ;assign console to CRT 
+?INIT:  LD   HL,8000H           ;assign console to CRT
         LD   (@CIVEC),HL
         LD   (@COVEC),HL
 	LD   HL,4000H		;assign printer to LPT1
@@ -84,9 +84,9 @@ LDLOOP: PUSH BC			;save record count
 	ADD  HL,BC		;bump destination address
 	EX   DE,HL
 	POP  BC			;restore record count
-	DJNZ LDLOOP		;move next record	
+	DJNZ LDLOOP		;move next record
 	RET			;return to caller
-	
+
 ;here if we couldn't find the file:
 NO$CCP:	LD   HL,CCP$MSG		;report this ...
 	CALL ?PMSG
@@ -109,9 +109,9 @@ RLLOOP: PUSH BC			;save record count
 	ADD  HL,BC		;bump destination address
 	EX   DE,HL
 	POP  BC			;restore record count
-	DJNZ RLLOOP		;move next record	
+	DJNZ RLLOOP		;move next record
 	RET			;return to caller
-	
+
 
 *EJECT
 ;External clock.
@@ -144,7 +144,7 @@ SETMULTI:
 	JP   BDOS
 READ:	LD   C,20		;read records
 	JP   BDOS
-	
+
 
 *EJECT
 SIGNON$MSG:
@@ -174,4 +174,3 @@ CCP$FCB:DEFB 3
 FCB$NR:	DEFB 0,0,0
 
 	END
-

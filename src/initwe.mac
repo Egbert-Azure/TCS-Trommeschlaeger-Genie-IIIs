@@ -20,7 +20,7 @@
 
 ;ASCII control code:
 BS	EQU  08H		;backspace
-LF	EQU  0AH		;line feed	
+LF	EQU  0AH		;line feed
 VT	EQU  0BH		;vertical tabulation
 CR	EQU  0DH		;carriage return
 ESC	EQU  1BH		;escape
@@ -93,7 +93,6 @@ TYPE1:	DEFM 'Winchester (cartridge)'
 TYPE2:	DEFM 'mini floppy'
 	DEFB 0
 TYPE3:	DEFM 'standard floppy'
-	DEFB 0 
+	DEFB 0
 
 	END
-	

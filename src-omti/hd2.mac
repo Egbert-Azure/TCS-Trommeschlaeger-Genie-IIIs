@@ -12,10 +12,10 @@
 ;*            angepasst an Harddisk 10 MByte    *
 ;*	30.7.93		V.DOSE			*
 ;*	      angepasst an 20 MByte Platte      *
-;*	      TANDON TM 262			*		
+;*	      TANDON TM 262			*
 ;*	21.12.93	E.SCHROEER		*
 ;*	      angepasst an 20 MByte Platte	*
-;*	      SEAGATE ST 225 Typ MFM/RLL	*		
+;*	      SEAGATE ST 225 Typ MFM/RLL	*
 ;*                                              *
 ;************************************************
 
@@ -30,7 +30,7 @@ bel     equ    07h
 sub     equ    1AH
 esc     equ    1BH
 
-   
+
 	public	hdwrit,hdread,hdlogi,hdinit,hd1ini
 
 ; Variables containing parameters passed by BDOS
@@ -227,12 +227,12 @@ hds0:	or	c
 	ld	a,b		; head #
 	ld	(head),a
 	ret
-	
+
 ; suppress error message if BDOS is returning errors to application...
 
 dskerr:
-	ld	a,(@erdme) 
-	cp	0ffh 
+	ld	a,(@erdme)
+	cp	0ffh
 	jr	nz,pr_err
 	pop	af		; correct stack
 harderror:
@@ -245,10 +245,10 @@ harderror:
 
 pr_err:	call	?pderr		; print message header
         ld      hl,(hdc_rw)     ; READ oder WRITE
-        call    ?pmsg  
+        call    ?pmsg
         call    frageab         ; Eingabe holen
         ld      hl,msgend       ; Statuszeile aus
-print:  call    ?pmsg  
+print:  call    ?pmsg
 hdlogi:	ret			; dummy vector, hard-disk login
 
 ; get console input, echo it and shift to uppercase
@@ -267,7 +267,7 @@ istda:    call ?conin
           ret  c
           and  0dfh
           ret
-     
+
 
 
 ; hard disk subroutines
@@ -307,7 +307,7 @@ bcount:	db	1		; block count
 termin:	db	2		; step rate --> 25 us
 
 hd_charact:			; drive characteristics
-				; 614 cylinders, 4 heads 
+				; 614 cylinders, 4 heads
 	db	2		; last cylinder  (msb)
 	db	102		; last cylinder  (lsb)
 	db	4		; 4 heads
@@ -328,11 +328,10 @@ hdmsg2:		db	7
 		db	'Command Terminate Error'
 		db	0
 iniok:		db	'Seagate ST 225 - 21.4 MB'
-		db	13,10,0		
+		db	13,10,0
 msgend:         db      sub,esc,'D',0
-       
+
 
 
 
 	end
-

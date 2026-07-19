@@ -25,7 +25,7 @@ SCB$BASE EQU 0FE00H		;base of the SCB
 
 @CIVEC  EQU  SCB$BASE+22H	;console   input  redirection vector
 				;(word, R/W)
-@COVEC  EQU  SCB$BASE+24H       ;console   output redirection vector 
+@COVEC  EQU  SCB$BASE+24H       ;console   output redirection vector
 				;(word, R/W)
 @AIVEC  EQU  SCB$BASE+26H	;auxiliary input  redirection vector
 				;(word, R/W)

@@ -41,10 +41,10 @@
 ; 1989 F.Chwolka
 ;
 ; Zus{tzlich rumgepfuscht hat Volker Dose. Zum einen um eine Harddisk
-; mit OMTI-Controller lesen zu k|nnen. 
+; mit OMTI-Controller lesen zu k|nnen.
 ; Die Harddiskroutine f}r 10MByte Platte mit 2 K|pfen und 612 Cylindern
 ; wird jetzt eingebunden. Die Routinen sind die BIOS Sources von
-; Helmut Bernhardt aus HD2.MAC. Der DPB wurde mit XCPM3.LIB aus 
+; Helmut Bernhardt aus HD2.MAC. Der DPB wurde mit XCPM3.LIB aus
 ; HDDTBL.ASM errechnet.
 ; Ausserdem soll die RAM-Floppy 770Kbyte Speicher bekommen, da bei mir
 ; der Helmutsche 1MB-Umbau eingebaut ist. Daf}r war es notwendig die
@@ -100,7 +100,7 @@ SBANK	equ	3	;Erste Bank, die von der RAMDisk benutzt wird
 
         external hdwrit,hdread,hdlogi,hdinit,hd1ini
 
- 
+
 ;ASCII control codes:
 SUB	EQU	1AH		; Substitute
 ESC	EQU	1BH		; Escape
@@ -202,7 +202,7 @@ DS0:	DEFW	0		;no translation table
 	DEFW	0FFFEH,0FFFEH	;ALV, DIRBCB, DTABCB, HASH
 	DEFW	0FFFEH,0FFFEH	;allocated by GENCPM
 	DEFB	0		;hash bank
-							
+
 ;
 ;XDPH f}r Harddisk Partition 2 D:
 	DEFW	hdwrit
@@ -224,7 +224,7 @@ DS1:	DEFW	0		;no translation table
 	DEFW	0FFFEH,0FFFEH	;ALV, DIRBCB, DTABCB, HASH
 	DEFW	0FFFEH,0FFFEH	;allocated by GENCPM
 	DEFB	0		;hash bank
-							
+
 
 
 
@@ -255,7 +255,7 @@ PDCT:	DEFB	01110000B
 
 ;sector translation tables:
 ;Drive E:
-;8" Drive 
+;8" Drive
 ;XLT3:	defb	0,6,12,18,24,4,10,16,22,2,8,14,20
 ;	defb	1,7,13,19,25,5,11,17,23,3,9,15,21
 
@@ -269,7 +269,7 @@ XLTF:	DEFB	0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
 ;checksum vectors
 CSVF:   DEFS    64
 
-  
+
 ;allocation vectors:
 ALVF:	DEFS	100
 
@@ -362,18 +362,18 @@ DPBF:	DEFW	80		; 128 byte records per track
 ;:---------------------------------:
 
 DPBHD1:	DEFB  	010H,001H   ;SPT= 136      128 Byte records/track
-	DEFB	005H        ;BSH=   5      block shift factor  
-        DEFB    01FH        ;BLM=  31      block mask   
-	DEFB	001H        ;EXM=   1      extend mask  
-        DEFB    01FH,00AH   ;DSM=2591	   maximum block number 
+	DEFB	005H        ;BSH=   5      block shift factor
+        DEFB    01FH        ;BLM=  31      block mask
+	DEFB	001H        ;EXM=   1      extend mask
+        DEFB    01FH,00AH   ;DSM=2591	   maximum block number
 	DEFB	0FFH,007H   ;DRM=1024      maximum directory number
 	DEFB	0FFH        ;AL0= 255      allocation vector 0
         DEFB    0FFH        ;AL1= 255      allocation vector 1
 	DEFB	000H,080H   ;CKS=   0      checksum size is zero
                             ;              ,permanently mounted
-	DEFB	002H,000H   ;OFF=   2      reserved tracks 
+	DEFB	002H,000H   ;OFF=   2      reserved tracks
  	DEFB	002H        ;PSH=   2      physical sector shift
-	DEFB	003H        ;PHM=   3      physical record mask 
+	DEFB	003H        ;PHM=   3      physical record mask
 
 ;das hei~t auf Deutsch:
 ;			512 Bytes/Sector
@@ -382,24 +382,24 @@ DPBHD1:	DEFB  	010H,001H   ;SPT= 136      128 Byte records/track
 ;			4KB Blockgr|~e
 ;		       2048 Directory Eintr{ge
 ;			  2 Reservierte Systemspur
-;		      8000h Flag f}r nonremovable medium 			
+;		      8000h Flag f}r nonremovable medium
 
 ;:------------------------------------:
 ;:HARDISK 10MByte Partition 2 D:      :
 ;:------------------------------------:
 DPBHD2:	DEFB  	010H,001H   ;SPT= 136      128 Byte records/track
-	DEFB	005H        ;BSH=   5      block shift factor  
-        DEFB    01FH        ;BLM=  31      block mask   
-	DEFB	001H        ;EXM=   1      extend mask  
-        DEFB    039H,00AH   ;DSM=2617      maximum block number 
+	DEFB	005H        ;BSH=   5      block shift factor
+        DEFB    01FH        ;BLM=  31      block mask
+	DEFB	001H        ;EXM=   1      extend mask
+        DEFB    039H,00AH   ;DSM=2617      maximum block number
 	DEFB	0FFH,007H   ;DRM=2048      maximum directory number
 	DEFB	0FFH        ;AL0= 255      allocation vector 0
         DEFB    0FFH        ;AL1= 255      allocation vector 1
 	DEFB	000H,080H   ;CKS=   0      checksum size is zero
                             ;              ,permanently mounted
-	DEFB	033H,001H   ;OFF= 307      reserved tracks 
+	DEFB	033H,001H   ;OFF= 307      reserved tracks
  	DEFB	002H        ;PSH=   2      physical sector shift
-	DEFB	003H        ;PHM=   3      physical record mask 
+	DEFB	003H        ;PHM=   3      physical record mask
 
 ;das hei~t auf Deutsch:
 ;			512 Bytes/Sector
@@ -408,10 +408,10 @@ DPBHD2:	DEFB  	010H,001H   ;SPT= 136      128 Byte records/track
 ;			4KB Blockgr|~e
 ;		       2048 Directory Eintr{ge
 ;			307 Reservierte Systemspuren
-;		      8000h Flag f}r nonremovable medium 			
+;		      8000h Flag f}r nonremovable medium
 
 
-	
+
 
           DSEG
 
@@ -446,7 +446,7 @@ CLRNXT:	PUSH	BC		; Save remaining entry count
 	JR	NZ,CLRNXT	; Clear next entry
 	RET
 CLRBYT:	DEFB	0E5H
-          
+
 
 
 ;EJECT
@@ -748,4 +748,3 @@ MSG$END:DEFB	SUB,ESC,'D',0
 
 	END
 
-

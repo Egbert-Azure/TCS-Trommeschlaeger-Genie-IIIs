@@ -9,12 +9,12 @@
 *  Thomas Holte			                         	 Version 1.0  *
 * 									      *
 ******************************************************************************/
-  
+
 /* characteristics of NEC D5124 Winchester drive */
 #define STEP_RATE     0		/* buffered step      	    */
 #define WPCOMP_CYL  128		/* starting cylinder of
 				   write precompensation    */
-#define SECLEN     1024		/* sector length       	    */   
+#define SECLEN     1024		/* sector length       	    */
 #define SECSIZE    0x40		/* size bits for controller */
 #define SECCOUNT      9		/* sectors per track   	    */
 #define TRKCOUNT   1240		/* track count         	    */

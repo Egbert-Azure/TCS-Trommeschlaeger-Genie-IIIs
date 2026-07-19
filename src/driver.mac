@@ -60,7 +60,7 @@ FS	EQU  1CH		;file separator
 GS	EQU  1DH		;group separator
 RS	EQU  1EH		;record separator
 DEL	EQU  7FH		;delete
-	
+
 ;common entry point for all driver routines:
 	PUSH BC			;save contents of reg. B & HL
 	PUSH HL
@@ -193,7 +193,7 @@ NBOARD:
 	DEFB '.','>',0  	;., SHIFT-., CTRL-.
 	DEFB '/','?',0 		;/, SHIFT-/, CTRL-/
 
-;address 3840H (special keys):	
+;address 3840H (special keys):
 	DEFB CR,CR,0    	;NEWLINE   , SHIFT-NEWLINE   , CTRL-NEWLINE
 	DEFB DEL,0FCH,0 	;CLEAR     , SHIFT-CLEAR     , CTRL-CLEAR
 	DEFB ESC,0FDH,0 	;BREAK     , SHIFT-BREAK     , CTRL-BREAK
@@ -203,7 +203,7 @@ NBOARD:
 	DEFB ACK,HT,BEL  	;RGHT-ARROW, SHIFT-RGHT-ARROW, CTRL-RGHT-ARROW
 	DEFB ' ',' ',0 		;SPACE     , SHIFT-SPACE     , CTRL-SPACE
 
-;address 38A0H (function keys):	
+;address 38A0H (function keys):
 	DEFB 80H,80H,0  	;F1, SHIFT-F1, CTRL-F1
 	DEFB 81H,81H,0  	;F2, SHIFT-F2, CTRL-F2
 	DEFB 82H,82H,0  	;F3, SHIFT-F3, CTRL-F3
@@ -213,7 +213,7 @@ NBOARD:
 	DEFB 86H,86H,0  	;F7, SHIFT-F7, CTRL-F7
 	DEFB 87H,87H,0 		;F8, SHIFT-F8, CTRL-F8
 
-;address 38C0H (number keys [numeric keypad]):	
+;address 38C0H (number keys [numeric keypad]):
 	DEFB '0','0',0  	;1, SHIFT-1, CTRL-1
 	DEFB '1','1',0  	;2, SHIFT-2, CTRL-2
 	DEFB '2','3',0  	;3, SHIFT-3, CTRL-3
@@ -233,7 +233,7 @@ NBOARD:
 	DEFB 89H,89H,0  	;P2, SHIFT-P2, CTRL-P2
 	DEFB 88H,88H,0 		;P1, SHIFT-P1, CTRL-P1
 
-;address 38E0H (number & special keys [numeric keypad]):	
+;address 38E0H (number & special keys [numeric keypad]):
 	DEFB '8','8',0  	;8 , SHIFT-8 , CTRL-8
 	DEFB '9','9',0  	;9 , SHIFT-9 , CTRL-9
 	DEFB 0FEH,0FEH,0	;00, SHIFT-00, CTRL-00
@@ -308,7 +308,7 @@ WBOARD:
 	DEFB '.','>',0  	;., SHIFT-., CTRL-.
 	DEFB '/','?',0 		;/, SHIFT-/, CTRL-/
 
-;address 3840H (special keys):	
+;address 3840H (special keys):
 	DEFB CR,CR,0    	;NEWLINE   , SHIFT-NEWLINE   , CTRL-NEWLINE
 	DEFB 8DH,8EH,DEL	;CLEAR     , SHIFT-CLEAR     , CTRL-CLEAR
 				;CLEAR 	     = erase to end of line
@@ -335,7 +335,7 @@ WBOARD:
 	DEFB ' ',' ',95H	;SPACE     , SHIFT-SPACE     , CTRL-SPACE
 				;CTRL-SPACE = hard space
 
-;address 38A0H (function keys):	
+;address 38A0H (function keys):
 	DEFB SYN,SYN,0  	;F1, SHIFT-F1, CTRL-F1
 				;F1 = toggle insert mode
 	DEFB SO,SO,0    	;F2, SHIFT-F2, CTRL-F2
@@ -353,7 +353,7 @@ WBOARD:
 	DEFB 97H,97H,0  	;F8, SHIFT-F8, CTRL-F8
 				;F8 = toggle right justifying
 
-;address 38C0H (number keys [numeric keypad]):	
+;address 38C0H (number keys [numeric keypad]):
 	DEFB '0','0',0  	;1, SHIFT-1, CTRL-1
 	DEFB '1','1',0  	;2, SHIFT-2, CTRL-2
 	DEFB '2','3',0  	;3, SHIFT-3, CTRL-3
@@ -370,7 +370,7 @@ WBOARD:
 	DEFB ETX,ETX,0 		;P5, SHIFT-P5, CTRL-P5
 				;P5 = page down
 	DEFB DC2,DC2,0  	;P4, SHIFT-P4, CTRL-P4
-				;P4 = page up	
+				;P4 = page up
 	DEFB SUB,SUB,0  	;P3, SHIFT-P3, CTRL-P3
 				;P3 = line down
 	DEFB ETB,ETB,0  	;P2, SHIFT-P2, CTRL-P2
@@ -378,7 +378,7 @@ WBOARD:
 	DEFB HT,HT,0    	;P1, SHIFT-P1, CTRL-P1
 				;P1 = TAB
 
-;address 38E0H (number & special keys [numeric keypad]):	
+;address 38E0H (number & special keys [numeric keypad]):
 	DEFB '8','8',0  	;8 , SHIFT-8 , CTRL-8
 	DEFB '9','9',0  	;9 , SHIFT-9 , CTRL-9
 	DEFB 0FEH,0FEH,0	;00, SHIFT-00, CTRL-00
@@ -434,7 +434,7 @@ HYPHEN:	DEFB 2			;toggle hyphen help
 	DEFB SI,'H',0
 JSTIFY:	DEFB 2			;toggle right justifying
 	DEFB SI,'J',0
-		
+
 
 *EJECT
 ;table of control codes:
@@ -464,7 +464,7 @@ TAB2E:	DEFB 0FFH,' '		;set erase character
 	DEFB 0FFH,'E'		;enable status line
 	DEFB 0FFH,'G'		;German character set
 	DEFB 0FFH,'N'		;normal keyboard
-	DEFB 0FFH,'O'		;WordStar keyboard			
+	DEFB 0FFH,'O'		;WordStar keyboard
 	DEFB 0FFH,'R'		;inverse display mode
 	DEFB 0FFH,'S'		;normal display mode
 	DEFB 0FFH,'X'		;turn on wrap around mode
@@ -476,7 +476,7 @@ TAB2E:	DEFB 0FFH,' '		;set erase character
 	DEFB 0,CAN		;erase to end of line
 	DEFB 0FFH,'W'		;delete line
 	DEFB 0,EM		;erase to end of screen
-TAB1E:	DEFB 0,SUB		;clear screen	
+TAB1E:	DEFB 0,SUB		;clear screen
 
 
 *EJECT
@@ -531,7 +531,7 @@ DCT:    DEFB 01110000B          ;bit 7   : reserved
 
 ;drive 0:
 ;Megabyte 8:
-        
+
         DEFB 01110000B
         DEFB 11000000B
         DEFB 3
@@ -584,7 +584,7 @@ DCTW:   DEFB 01100000B          ;bits 7-5: no. of surfaces
         DEFB 00100000B
         DEFB 10000000B
         DEFB 0FFH
-        DEFB 1 
+        DEFB 1
         DEFB 9
         DEFW 612
 
@@ -630,7 +630,7 @@ SER1:	DEFB 11000100B
 
 ;clock ?
 CLOCK:	DEFB 1			;0 = software clock
-				;1 = hardware clock 
+				;1 = hardware clock
 
 
 *EJECT
@@ -648,7 +648,7 @@ CLOCK:	DEFB 1			;0 = software clock
 ;  R0  = This 8 bit write-only register determines the horizontal frequency of
 ;	 HS. It is the total of displayed plus non-displayed character time
 ;	 units minus one.
-;  R1  = This 8 bit write-only register determines the number of displayed 
+;  R1  = This 8 bit write-only register determines the number of displayed
 ;	 characters per horizontal line.
 ;  R2  = This 8 bit write-only register determines the horizontal sync position
 ;	 on the horizontal line.
@@ -697,7 +697,7 @@ CLOCK:	DEFB 1			;0 = software clock
 ;  R14
 ;  R15 = This 14 read/write register stores the cursor location. This register
 ; 	 consists of an 8 bit lower (R15) and 6 bit higher (R14) register.
- 
+
 $CRTREG EQU  0F6H		;CRT controller address register
 $CRTCMD EQU  0F7H		;CRTC command register
 
@@ -779,9 +779,9 @@ $RSINIT:LD   HL,RSTAB		;base of entry table --> reg. HL
 	LD   H,(HL)
 	LD   L,C
 	JP   (HL)		;execute initialization routine
-	 
+
 ;RS232C initialization driver entry routine:
-RSTAB:	DEFW RSINIA,RSINIB	
+RSTAB:	DEFW RSINIA,RSINIB
 
 ;control register of SIO A:
 WR0A	EQU  0D2H
@@ -877,10 +877,10 @@ WR5B:	DEFS 1
 WR3B:	DEFS 1
 	DEFB 0
 
-								
+
 *EJECT
 ;*******************
-;*  $ K B C H A R  *  
+;*  $ K B C H A R  *
 ;*******************
 
 ;exit: A = char (0 = no char available)
@@ -932,7 +932,7 @@ $SCAN:  IN   A,($SYS1)		;read system byte 1
 	POP  AF			;restore system byte 1
 	OUT  ($SYS1),A		;write it
 	RET			;return to interrupt service routine
-	
+
 SCAN:	LD   HL,KEYHLD		;HL = keyboard work area ptr
 	LD   IX,KEYBRD		;IX = row address table ptr
 	LD   BC,38E0H		;BC = row A10 ptr
@@ -993,7 +993,7 @@ PREV:	PUSH AF                 ;save previous column bits
 	LD   DE,(COUNT2)        ;and compare it with second counter
 	LD   A,H
         CP   D
-	JR   NZ,REST  
+	JR   NZ,REST
 	LD   A,L
 	CP   E
 REST:  	POP  HL			;restore previous row
@@ -1003,17 +1003,17 @@ REST:  	POP  HL			;restore previous row
 	AND  (HL)
 	LD   (HL),A
 	LD   A,1		;set repeat mode
-	LD   (REPEAT),A		
+	LD   (REPEAT),A
 	LD   HL,0		;clear first counter
 	LD   (COUNT1),HL
 	LD   HL,(DELAY4)	;initialize second counter
-	LD   (COUNT2),HL	
+	LD   (COUNT2),HL
 	POP  AF			;adjust stack pointer
 	JR   SCAN		;scan keyboard again
 RTN:	POP  AF			;restore column bits
 	POP  AF
 	RET			;no key active - return
-	
+
 ;fist debounce routine:
 ACTIVE:	LD   E,A		;save column bits
 	PUSH BC			;save active row address
@@ -1048,7 +1048,7 @@ FOUND:	LD   A,C      		;column bits --> accu
 	LD   L,E
 	ADD  HL,HL		;(row * 8 + column (0 - 7)) * 2
  	ADD  HL,DE		;(row * 8 + column (0 - 7)) * 3
-		
+
 ;get ASCII code of pressed key:
 	LD   BC,(KEYTAB)	;^table of ASCII codes --> reg. BC
 	ADD  HL,BC              ;calculate ^ASCII code of pressed key
@@ -1119,9 +1119,9 @@ GERMAN: DEFB 0    		;switch bit to alter character set
 KEYHLD:	DEFB 0,0,0,0,0,0        ;keyboard work area
 	DEFB 0,0,0,0,0
 COUNT1: DEFW 0     		;delay counters for auto repeat function
-COUNT2: DEFW 0     
+COUNT2: DEFW 0
 OLDROW: DEFW 0     		;temporary memory for keyboard driver
-OLCLMN: DEFB 0     
+OLCLMN: DEFB 0
 RDYKEY:	DEFB 0			;key code memory
 REPEAT:	DEFB 0			;repeat mode
 
@@ -1190,7 +1190,7 @@ PRINT2:	LD   A,(HL)		;screen character 		  --> accu
 	LD   A,LF		;output a line feed
 	CALL PRCHR0
 	DEC  D			;decrement line counter
-	JR   NZ,PRINT1		;print next line	
+	JR   NZ,PRINT1		;print next line
 	POP  HL			;restore reg. HL
 	JR   GERSE3		;go on
 ERASE:	LD   A,SUB
@@ -1211,12 +1211,12 @@ GERSET:	PUSH HL
 GERSE1:	LD   A,'A'		;load ASCII character set
 GERSE2:	CALL $VDCHAR
 	POP  HL
-GERSE3:	XOR  A			;clear key code	
+GERSE3:	XOR  A			;clear key code
 	JR   TSTKEY
 
 ;test if function key:
 FKEY:	BIT  7,A		;check if code >= 80H
-	JR   Z,TSTKEY		;jump if not 	 
+	JR   Z,TSTKEY		;jump if not
 	PUSH HL			;save ^key memory
 	LD   C,A		;save key code
 	LD   E,A
@@ -1243,7 +1243,7 @@ FKEY:	BIT  7,A		;check if code >= 80H
 	LD   (FPTR),DE		;load address of first function key character
 	POP  HL			;adjust stack pointer
 	JP   $KBWAIT
-FKEYEND:LD   A,C		;restore original key code	
+FKEYEND:LD   A,C		;restore original key code
 	POP  HL			;restore ^key memory
 
 ;test key memory if legal code:
@@ -1282,7 +1282,7 @@ $VDCHAR:LD   C,A		;save character
 
         LD   IX,(VDTABP)	;^^screen constants --> reg. IX
 	LD   HL,ESCAPE 		;test if escape sequence
-	BIT  2,(HL)		
+	BIT  2,(HL)
 	JR   NZ,ESCSQ2		;cursor addressing routine
 	BIT  1,(HL)
 	JR   NZ,ESCSQ1		;handle second byte of escape sequence
@@ -1295,12 +1295,12 @@ $VDCHAR:LD   C,A		;save character
 
 ;handling of single byte ASCII's:
 NORMAL: CP   20H		;control char ?
-	JR   C,CNTRL 
+	JR   C,CNTRL
 	LD   L,A		;save char
 	LD   A,(IX+5)		;right column --> accu
 	SUB  (IX+9)		;calc. no. of columns right to the cursor
 	RET  M			;return, if cursor beyond right column
-	LD   A,L		;restore char	
+	LD   A,L		;restore char
         OR   A			;ASCII code > 80H ?
 	JP   P,NORMAL1		;jump if not
 	CP   0A0H		;ASCII code > 0A0H ?
@@ -1311,7 +1311,7 @@ NORMAL1:OR   (IX+11)		;put invert mask over character
 	LD   (HL),A		;output char
 	JP   CURRGT		;output cursor
 
-;handling of control codes: 
+;handling of control codes:
 CNTRL:	OR   A			;control code = 0 ?
 	RET  Z
       	LD   HL,TAB1E+1		;^end of control code table --> reg. HL
@@ -1410,7 +1410,7 @@ CURLFT: LD   A,(IX+3)		;left column --> accu
 	JP   M,CURLFT1		;jump if not
 	LD   A,(WRAP)		;wrap around mode ?
 	OR   A
-	RET  Z			;return if not	
+	RET  Z			;return if not
        	LD   A,(IX+5)		;right column --> current column
 	LD   (IX+9),A
 	JR   CURUP
@@ -1441,7 +1441,7 @@ CURRGT:	LD   A,(IX+5)		;right column --> accu
 	PUSH AF			;save status reg.
 	INC  (IX+9) 		;increment column no.
 	POP  AF			;restore status reg.
-	JP   NZ,OUTCUR		;output cursor 
+	JP   NZ,OUTCUR		;output cursor
 	LD   A,(WRAP)		;wrap around mode ?
 	OR   A
 	JP   Z,CUROFF+4		;turn cursor off
@@ -1454,7 +1454,7 @@ CURRGT:	LD   A,(IX+5)		;right column --> accu
 NEWLIN:	LD   A,(IX+3)		;left column  --> current column
 	LD   (IX+9),A
 	JP   INSLI3		;output cursor
-	
+
 ;home cursor:
 HOME:	LD   A,(IX+2)		;top line    --> current line
 	LD   (IX+8),A
@@ -1463,9 +1463,9 @@ HOME:	LD   A,(IX+2)		;top line    --> current line
 	JP   OUTCUR		;output cursor
 
 ;select window:
-WINDOW:	LD   C,A		;save window # 
+WINDOW:	LD   C,A		;save window #
 	LD   A,(STONOFF)	;status line enabled ?
-	RET  NZ			;return if yes 
+	RET  NZ			;return if yes
 	LD   A,C		;restore window #
 	OR   A			;window # < 0 ?
 	RET  M			;return if yes
@@ -1476,7 +1476,7 @@ WINDOW:	LD   C,A		;save window #
 	ADD  A,A
 	ADD  A,A
 	ADD  A,C
-	LD   B,0		;window number * 13 --> reg. BC 
+	LD   B,0		;window number * 13 --> reg. BC
 	LD   C,A
 	LD   HL,VDTAB		;^screen constants  --> reg. HL
 	ADD  HL,BC		;calc current table entry
@@ -1611,7 +1611,7 @@ SETNK1:	LD   (KEYTAB),HL	;store it
 
 ;switch on WordStar keyboard:
 SETWKB:	LD   HL,WBOARD		;^WordStar key table --> reg. HL
-	JR   SETNK1		 
+	JR   SETNK1
 
 ;turn on inverse display mode:
 INVON:	LD   (IX+11),80H	;store invert mask
@@ -1709,7 +1709,7 @@ DELLIN: LD   A,(IX+3)		;left  column --> current column
 	POP  AF
 	LD   (IX+8),A		;restore current line
 	JR   INSLI3		;output cursor
- 
+
 ;erase to end of screen:
 ERAEOS: CALL ERAEOLN		;erase to end of first line
 	LD   B,(IX+8)		;save current line
@@ -1813,7 +1813,7 @@ VDTAB:	REPT 8
 	DEFB 80			;column  count
 	DEFB 0			;current line
 	DEFB 0			;current column
-	DEFB ' '		;erase   character 
+	DEFB ' '		;erase   character
         DEFB 0     		;0 = normal mode,  80H = inverse mode
        	DEFB 0     		;0 = cursor on  , 0FFH = cursor off
 	ENDM
@@ -1829,7 +1829,7 @@ VDSTAT:	DEFB 25			;maximum line   count
 	DEFB 80			;column  count
 	DEFB 24			;current line
 	DEFB 0			;current column
-	DEFB ' '		;erase   character 
+	DEFB ' '		;erase   character
         DEFB 0     		;0 = normal mode,  80H = inverse mode
        	DEFB 0     		;0 = cursor on  , 0FFH = cursor off
 
@@ -1850,7 +1850,7 @@ VDTEMP:	DEFS 13			;temporary storage area for screen constants
 ;entry: B = number of Centronics interface (0, 1)
 
 ;exit : A = printer status
-;       0 = printer ready 
+;       0 = printer ready
 ;    <> 0 = printer not ready
 
 ;calc entry of printer status routine:
@@ -1915,7 +1915,7 @@ PRCHR0:	LD   C,A		;save char
 	LD   A,C		;restore char
 	OUT  ($PTR0),A		;print it
 	RET			;return to caller
-			  
+
 ;output a character to printer 1:
 $PTR1D	EQU  0D4H		;data port of PIO
 
@@ -1930,7 +1930,7 @@ PRCHR1:	LD   C,A		;save char
 	OUT  ($PTR1),A		;clear STROBE
 
 	RET			;return to caller
-			  
+
 
 *EJECT
 ;*******************
@@ -1941,7 +1941,7 @@ PRCHR1:	LD   C,A		;save char
 
 ;exit : A = input status
 ;	0 = no char available
-;    <> 0 = char available	
+;    <> 0 = char available
 
 ;calc entry of RS232C input status routine:
 $RSRCST:LD   HL,RSSTAB		;base of entry table --> reg. HL
@@ -1954,9 +1954,9 @@ $RSRCST:LD   HL,RSSTAB		;base of entry table --> reg. HL
 	LD   H,(HL)
 	LD   L,C
 	JP   (HL)		;execute initialization routine
-	 
+
 ;RS232C input status routine entry table:
-RSSTAB:	DEFW RSRCSA,RSRCSB	
+RSSTAB:	DEFW RSRCSA,RSRCSB
 
 ;get input status of SIO A:
 RSRCSA: IN   A,(WR0A)    	;read status
@@ -1968,7 +1968,7 @@ RSRCSA: IN   A,(WR0A)    	;read status
 	LD   A,(WR5A)		;get write register 5
 	SET  1,A		;set RTS
 	OUT  (WR0A),A		;request to send
-RSRCSA1:IN   A,(WR0A)		;read status	
+RSRCSA1:IN   A,(WR0A)		;read status
 	BIT  0,A		;character available ?
 	JR   NZ,RSRCSA2		;jump if character ready
 	DJNZ RSRCSA1		;scan 256 times
@@ -1992,7 +1992,7 @@ RSRCSB: IN   A,(WR0B)    	;read status
 	LD   A,(WR5B)		;get write register 5
 	SET  1,A		;set RTS
 	OUT  (WR0B),A		;request to send
-RSRCSB1:IN   A,(WR0B)		;read status	
+RSRCSB1:IN   A,(WR0B)		;read status
 	BIT  0,A		;character available ?
 	JR   NZ,RSRCSB2		;jump if character ready
 	DJNZ RSRCSB1		;scan 256 times
@@ -2006,7 +2006,7 @@ RSRCSB3:LD   A,5		;speak to write register 5
         LD   A,C		;get input status
 	RET
 
- 
+
 *EJECT
 ;*****************
 ;*  $ R S R C V  *
@@ -2014,7 +2014,7 @@ RSRCSB3:LD   A,5		;speak to write register 5
 
 ;entry: B = number of RS232C interface (0, 1)
 
-;exit : A = char	
+;exit : A = char
 
 ;calc entry of RS232C input routine:
 $RSRCV: LD   HL,RSRTAB		;base of entry table --> reg. HL
@@ -2027,9 +2027,9 @@ $RSRCV: LD   HL,RSRTAB		;base of entry table --> reg. HL
 	LD   H,(HL)
 	LD   L,C
 	JP   (HL)		;execute initialization routine
-	 
+
 ;RS232C input routine entry table:
-RSRTAB:	DEFW RSRCVA,RSRCVB	
+RSRTAB:	DEFW RSRCVA,RSRCVB
 
 ;read character from SIO A:
 DRA	EQU  0D0H		;data register of SIO A
@@ -2042,7 +2042,7 @@ RSRCVA:	IN   A,(WR0A) 		;read status
 	LD   A,(WR5A)		;get write register 5
 	SET  1,A		;set RTS
 	OUT  (WR0A),A		;request to send
-RSRCVA1:IN   A,(WR0A)		;read status	
+RSRCVA1:IN   A,(WR0A)		;read status
 	BIT  0,A		;character available ?
 	JR   Z,RSRCVA1		;loop `til character ready
         LD   A,5		;speak to write register 5
@@ -2051,7 +2051,7 @@ RSRCVA1:IN   A,(WR0A)		;read status
 	OUT  (WR0A),A		;data terminal ready
 RSRCVA2:IN   A,(DRA)		;read character
 	RET
-	
+
 ;read character from SIO B:
 DRB	EQU  0D1H		;data register of SIO A
 
@@ -2063,7 +2063,7 @@ RSRCVB:	IN   A,(WR0B) 		;read status
 	LD   A,(WR5B)		;get write register 5
 	SET  1,A		;set RTS
 	OUT  (WR0B),A		;request to send
-RSRCVB1:IN   A,(WR0B)		;read status	
+RSRCVB1:IN   A,(WR0B)		;read status
 	BIT  0,A		;character available ?
 	JR   Z,RSRCVB1		;loop `til character ready
         LD   A,5		;speak to write register 5
@@ -2072,13 +2072,13 @@ RSRCVB1:IN   A,(WR0B)		;read status
 	OUT  (WR0B),A		;data terminal ready
 RSRCVB2:IN   A,(DRB)		;read character
 	RET
-	
+
 
 *EJECT
 ;*******************
 ;*  $ R S T X S T  *
-;******************* 
-	
+;*******************
+
 ;entry: B = number of RS232C interface (0, 1)
 
 ;exit : A = terminal status
@@ -2089,13 +2089,13 @@ RSRCVB2:IN   A,(DRB)		;read character
 $RSTXST:LD   A,WR0A    		;control register of SIO A --> accu
 	ADD  A,B		;add relative port number
 	LD   C,A		;absolute port address --> reg. C
-	LD   A,10H		
+	LD   A,10H
 	OUT  (C),A		;reset ext/status interrupts
 	IN   A,(C)		;read status
 	AND  2CH		;buffer empty, data set ready, clear to send ?
         SUB  2CH
 	RET
-	
+
 
 *EJECT
 ;***************
@@ -2141,7 +2141,7 @@ $DDDEN  EQU  0FFH               ;set double density
 ;***************
 
 ;entry: A  = drive  number 	     (lower nibble)
-;	     bank   number of buffer (upper nibble)	
+;	     bank   number of buffer (upper nibble)
 ;       B  = sector number
 ;       E  = track  number
 ;       HL = buffer pointer
@@ -2169,7 +2169,7 @@ $READ:  LD   C,A                ;save drive #/bank #
 ;*****************
 
 ;entry: A  = drive  number 	     (lower nibble)
-;	     bank   number of buffer (upper nibble)	
+;	     bank   number of buffer (upper nibble)
 ;       B  = sector number
 ;       E  = track  number
 ;       HL = buffer pointer
@@ -2194,9 +2194,9 @@ $WRITE: LD   C,A                ;save drive #/bank #
 TASK:   LD   (RDFLAG),A         ;set/reset READ-flag
 	LD   A,C		;restore drive/bank #
       	RRA   			;get bank number of transfer buffer
-	RRA   
-	RRA   
-	RRA   
+	RRA
+	RRA
+	RRA
 	AND  0FH
 	LD   (BANK),A		;store bank #
         LD   A,C      		;restore drive/bank #
@@ -2467,7 +2467,7 @@ WAIT:   DEFS 2                  ;counter for passed time
 ;		   YY = year
 ;		   HH = hours
 ;		   MM = minutes
-;		   SS = seconds		 
+;		   SS = seconds
 
 ;get time & date in ASCII format:
 $GETTIM:DI			;critical phase
@@ -2477,14 +2477,14 @@ $GETTIM:DI			;critical phase
 
 	LD   A,(IX+6)		;weekday      --> accu
 	AND  7			;make binary
-	LD   H,0		;weekday      --> reg. HL			
+	LD   H,0		;weekday      --> reg. HL
 	LD   L,A
 	LD   DE,DAYTAB		;base of weekday table --> reg. DE
 	ADD  A,A		;calc table entry
 	ADD  A,L
 	LD   L,A
 	ADD  HL,DE
-	LD   DE,ATIMBUF		;^ASCII buffer 	       --> reg. DE	
+	LD   DE,ATIMBUF		;^ASCII buffer 	       --> reg. DE
 	LD   BC,3		;length of table entry --> reg. BC
 	LDIR			;move weekday into ASCII buffer
 	INC  DE			;bump buffer ptr over space
@@ -2495,7 +2495,7 @@ $GETTIM:DI			;critical phase
 	LD   A,(IX+3)		;month (ones)   --> accu
 	LD   (DE),A		;store it
 	INC  DE
-	INC  DE			;bump buffer pointer over slash		
+	INC  DE			;bump buffer pointer over slash
 
 	LD   A,(IX+4)		;day (tenths) --> accu
 	AND  '3'		;mask leapyear bit
@@ -2504,7 +2504,7 @@ $GETTIM:DI			;critical phase
 	LD   A,(IX+5)		;day (ones)   --> accu
 	LD   (DE),A		;store it
 	INC  DE
-	INC  DE			;bump buffer pointer over slash		
+	INC  DE			;bump buffer pointer over slash
 
 	LD   A,(IX)		;year (tenths) --> accu
 	LD   (DE),A		;store it
@@ -2512,16 +2512,16 @@ $GETTIM:DI			;critical phase
 	LD   A,(IX+1)		;year (ones)   --> accu
 	LD   (DE),A		;store it
 	INC  DE
-	INC  DE			;bump buffer pointer over space		
+	INC  DE			;bump buffer pointer over space
 
 	LD   A,(IX+7)		;hours (tenths) --> accu
-	AND  '3'		;mask format bit 
+	AND  '3'		;mask format bit
 	LD   (DE),A		;store them
 	INC  DE
 	LD   A,(IX+8)		;hours (ones)   --> accu
 	LD   (DE),A		;store them
 	INC  DE
-	INC  DE			;bump buffer pointer over colon	
+	INC  DE			;bump buffer pointer over colon
 
 	LD   A,(IX+9)		;minutes (tenths) --> accu
 	LD   (DE),A		;store them
@@ -2529,7 +2529,7 @@ $GETTIM:DI			;critical phase
 	LD   A,(IX+10)		;minutes (ones)   --> accu
 	LD   (DE),A		;store them
 	INC  DE
-	INC  DE			;bump buffer pointer over colon	
+	INC  DE			;bump buffer pointer over colon
 
 	LD   A,(IX+11)		;seconds (tenths) --> accu
 	LD   (DE),A		;store them
@@ -2557,7 +2557,7 @@ GETTI1:	LD   A,E		;read date & time
 	OUT  (5BH),A
 	SUB  D
 	LD   E,A
-	IN   A,(5AH)	 	
+	IN   A,(5AH)
 	AND  0FH		;mask undesired bits
 	OR   '0'		;make ASCII digit
 	LD   (HL),A
@@ -2699,7 +2699,7 @@ ERROR	EQU  02H		;test for an error
 MAXDRIVE EQU 3			;drive count
 
 ;WDC registers:
-$DATA  	EQU  50H  		;data register	
+$DATA  	EQU  50H  		;data register
 $WPC    EQU  51H  		;write precomp register
 $ERROR  EQU  51H  		;error register
 $SECNO 	EQU  53H  		;sector number register
@@ -2724,7 +2724,7 @@ $DSEL	EQU  98H		;deselect drive
 ;*****************
 
 ;entry: A  = drive  number 	     (lower nibble)
-;	     bank   number of buffer (upper nibble)	
+;	     bank   number of buffer (upper nibble)
 ;       B  = sector number
 ;       DE = track  number
 ;       HL = buffer pointer
@@ -2748,7 +2748,7 @@ $READW:	LD   C,A		;save drive/bank number
 ;*****************
 
 ;entry: A  = drive  number 	     (lower nibble)
-;	     bank   number of buffer (upper nibble)	
+;	     bank   number of buffer (upper nibble)
 ;       B  = sector number
 ;       DE = track  number
 ;       HL = buffer pointer
@@ -2799,7 +2799,7 @@ SECNOW:	LD   (TRACK),DE		;store track #
 	LD   A,-3		;error code 3 --> accu
 	RET
 
-;actual I/O handler:		
+;actual I/O handler:
 INITW:	LD   (SECTOR),A		;store sector #
 
 
@@ -2830,7 +2830,7 @@ INITW1:	LD   A,(DRIVE)		;drive # --> accu
 	CALL DIV		;calc cylinder count
 	LD   (IY),H		;load cylinder count
 	LD   (IY+1),L
-	LD   (IY+3),H		;load starting cylinder 
+	LD   (IY+3),H		;load starting cylinder
 	LD   (IY+4),L		;for reduced write current
 	LD   H,0		;calc startimg cylinder for write precomp
 	LD   L,(IX+2)
@@ -2846,7 +2846,7 @@ INITW1:	LD   A,(DRIVE)		;drive # --> accu
 				;SASI port 0 		--> reg. C
         CALL REQWAIT		;wait for data request
 SELDRV:	IN   A,(RPORT1)		;read status again
-	AND  IOMASK+CDMASK+REQMASK	
+	AND  IOMASK+CDMASK+REQMASK
 	CP   IOMASK+CDMASK+REQMASK
 	JR   Z,SELDRV1		;jump if data transfer finished
 	CP   REQMASK
@@ -2938,7 +2938,7 @@ TRKSW1:	OUT  ($SECNO),A         ;set sector #
 
 	ENDC
 
-RWINI:  LD   HL,(BUFFER)	;get buffer pointer	
+RWINI:  LD   HL,(BUFFER)	;get buffer pointer
 	LD   A,(RDFLAG)		;READ or WRITE ?
 	OR   A
 	PUSH AF			;save status
@@ -2946,7 +2946,7 @@ RWINI:  LD   HL,(BUFFER)	;get buffer pointer
 	LD   A,$$READ		;issue read command
 	JR   RWINI2
 RWINI1:	LD   A,$$WRITE		;issue write command
-	
+
 	COND SASI		;Xebec part
 
 RWINI2:	CALL TASKOUT
@@ -2968,14 +2968,14 @@ WDCSTAT:CALL GETSTAT		;get status
 	RET  Z			;return if no errors
 ERREXIT:LD   A,$STATUS		;request sense status
 	CALL TASKOUT
-	
+
         CALL REQWAIT		;wait for data request
         IN   A,(RPORT0)		;read error code
 	LD   D,A		;save it temporarily
 	IN   A,(RPORT0)		;skip rest
 	IN   A,(RPORT0)
 	IN   A,(RPORT0)
-	CALL GETSTAT		;get status 
+	CALL GETSTAT		;get status
 	JR   NZ,ERREXIT
 
         LD   A,D      		;restore error code
@@ -3000,12 +3000,12 @@ DSEL:	LD   A,$DSEL 		;deselect drive
 
 ;put drive control table pointer in "IX":
 GETWCT: PUSH DE			;save reg. DE
-	LD   H,0		;drive # --> reg. HL	
-	LD   L,A		
+	LD   H,0		;drive # --> reg. HL
+	LD   L,A
 	ADD  A,A		;drive # * 2
 	ADD  A,L		;drive # * 3
 	ADD  A,A		;drive # * 6
-	ADD  A,L  		;drive # * 7	
+	ADD  A,L  		;drive # * 7
 	LD   L,A		;drive # * 7 --> reg. H
 	LD   DE,DCTW		;get drive table start
   	ADD  HL,DE		;add offset and get ^DCT
@@ -3123,7 +3123,7 @@ $GTIME3H:
 	PUSH HL			;save ^user buffer
         CALL GETTIM		;read time & date from clock chip
 	LD   IX,TIMBUF		;^temp buffer   --> reg. IX
-	LD   IY,BINARY$DATE 	;^result buffer --> reg. IY	
+	LD   IY,BINARY$DATE 	;^result buffer --> reg. IY
 
 	LD   A,(IX+7)		;hours (tenths) --> reg. C
 	AND  3			;make binary
@@ -3135,7 +3135,7 @@ $GTIME3H:
 	LD   A,(IX+8)		;hours (ones)   --> accu
 	AND  0FH   		;make binary
 	ADD  A,C		;add upper nibble
-	LD   (IY+2),A           ;store BCD hours	
+	LD   (IY+2),A           ;store BCD hours
 
 	LD   A,(IX+9)		;minutes (tenths) --> reg. C
 	AND  7			;make binary
@@ -3188,7 +3188,7 @@ $GTIME3H:
 	LD   A,(YEAR)		;binary year --> accu
 	SUB  78                 ;subtract base year
 	JR   NC,GTIME1          ;result negative ?
-	ADD  A,100              ;correct year	
+	ADD  A,100              ;correct year
 GTIME1: SRL  A			;year / 4 --> accu
 	RR   C        		;year % 4 --> reg. C
 	SRL  A
@@ -3232,7 +3232,7 @@ GTIME4:	EX   DE,HL		;daycount --> reg. DE
 	        		;since January 1st, 1978
 
 	LD   (IY),L 		;store daycount
-	LD   (IY+1),H           
+	LD   (IY+1),H
 
 	POP  DE			;restore ^user buffer
 GTIME5:	LD   HL,BINARY$DATE	;^temporary buffer --> reg. HL
@@ -3392,7 +3392,7 @@ BINBC3:	SLA  C			;quotient --> upper nibble
 	RET
 
 ;day table:
-;	     Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec	
+;	     Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
 MONTAB:	DEFW 0000,0031,0059,0090,0120,0151,0181,0212,0243,0273,0304,0334  ;1978
         DEFW 0365,0396,0424,0455,0485,0516,0546,0577,0608,0638,0669,0699  ;1979
         DEFW 0730,0761,0790,0821,0851,0882,0912,0943,0974,1004,1035,1065  ;1980
@@ -3443,7 +3443,7 @@ LDCHAR1:LD   A,(DE)		;get first scan	line
 	DJNZ LDCHAR1		;load next scan line
 	LD   A,(3C00H)		;get ASCII code
 	OR   80H		;set MSB
-	LD   (3C00H),A		;reload code	
+	LD   (3C00H),A		;reload code
 	LD   DE,PATTERN		;^dot matrix 	  	     --> reg. DE
 	LD   HL,8400H		;^first character 	     --> reg. HL
 	LD   B,16		;maximum count of scan lines --> reg. B
@@ -3530,7 +3530,7 @@ SELCHR:	IN   A,($SYS0)		;read system byte 0
 	LD   IX,NATIONAL	;^national codes --> reg. IX
 	LD   A,(GERMAN)		;national char set ?
 	OR   A
-	JR   Z,SELCHR1		;jump if no 
+	JR   Z,SELCHR1		;jump if no
 	LD   DE,FONTSET+136*16	;^dot matrices  --> reg. DE
 	JR   SELCHR2
 SELCHR1:LD   DE,FONTSET+128*16	;^dot matrices  --> reg. DE
@@ -3554,7 +3554,7 @@ SELCHR3:LD   A,(DE)		;get first scan	line
 SELCHR4:LD   IX,NATIONAL	;^national codes --> reg. IX
         LD   A,(GERMAN)		;national char set ?
 	OR   A
-	JR   Z,SELCHR5		;jump if no 
+	JR   Z,SELCHR5		;jump if no
 	LD   DE,FONTSET+136*16	;^dot matrices  --> reg. DE
 	JR   SELCHR6
 SELCHR5:LD   DE,FONTSET+128*16	;^dot matrices  --> reg. DE
@@ -3587,7 +3587,7 @@ SELCHR8:LD   A,(SAVECH)		;restore character at 3C00
 
 ;codes of national character set:
 NATIONAL:
-	DEFM '@[\]{|}~' 
+	DEFM '@[\]{|}~'
 	DEFB 0
 
 
@@ -3601,10 +3601,10 @@ NATIONAL:
 ;	     1  write window
 ;	HL = address of user buffer
 ;	 D = 0  contiguous  buffer
-;	     1  full screen buffer 	
+;	     1  full screen buffer
 ;	 E = attribute
 ;	     0  normal   display
-;	     1  inverted display	
+;	     1  inverted display
 
 ;direct screen I/O:
 $SCRNIO:LD   IX,(VDTABP)	;^screen constants --> reg. IX
@@ -3616,20 +3616,20 @@ $SCRNIO:LD   IX,(VDTABP)	;^screen constants --> reg. IX
 	LD   A,(IX+9)		;save current column
 	LD   (SCOLUMN),A
 	LD   A,(IX+11)		;save current display mode
-	LD   (SMODE),A	
+	LD   (SMODE),A
 	LD   A,(IX+12)		;save cursor state
 	LD   (SCUROFF),A
 	LD   A,(WRAP)		;save "wrap around" mode
 	LD   (SWRAP),A
 	DEC  E			;test display mode
 	JR   Z,SCRNIO1		;jump if inverse display mode
-	CALL INVOFF		;turn on normal display mode 
+	CALL INVOFF		;turn on normal display mode
 	JR   SCRNIO2
 SCRNIO1:CALL INVON		;turn on inverse display mode
 SCRNIO2:CALL CUROFF		;turn off cursor
 	CALL WRAPOFF		;turn off "wrap around" mode
 	CALL HOME		;home cursor
-	
+
 	POP  DE			;get buffer mode
 	DEC  D			;calc buffer increment
 	JR   Z,SCRNIO3		;jump if full screen buffer
@@ -3642,7 +3642,7 @@ SCRNIO3:LD   A,(IX+1)		;buffer increment = maximum column count
 SCRNIO4:LD   (BINC),A		;store buffer increment
 
 ;screen I/O:
-	LD   A,(IOMODE)		
+	LD   A,(IOMODE)
 	OR   A			;read or write screen ?
 	JR   NZ,SCRNIO9		;jump if write screen
 
@@ -3754,9 +3754,9 @@ SCRNI12:POP  HL			;adjust stack pointer
 	LD   A,(SCOLUMN)	;restore current column
 	LD   (IX+9),A
 	LD   A,(SMODE)		;restore current display mode
-	LD   (IX+11),A		
+	LD   (IX+11),A
 	LD   A,(SCUROFF)	;restore cursor state
-	LD   (IX+12),A		
+	LD   (IX+12),A
 	LD   A,(SWRAP)		;restore "wrap around" mode
 	LD   (WRAP),A
 	CALL OUTCUR		;position cursor
@@ -3810,7 +3810,7 @@ $INIT:	DI			;disable interrupts
 	LD   E,H		;baud rate   	       --> reg. E
 	CALL $RSINIT		;initialize Z80 SIO B
 
-	LD   HL,PIO$INIT$TBL	;initialize Z80 PIO 
+	LD   HL,PIO$INIT$TBL	;initialize Z80 PIO
 STREAM$OUT:
 	LD   A,(HL)
 	OR   A
@@ -3873,7 +3873,7 @@ $SETINT:LD   HL,0038H		;interrupt entry point --> reg. HL & DE
 	LD   A,(CLOCK)
 	OR   A
 	JR   Z,$CLSGR		;jump if not
-	LD   HL,$GTIME3H	;alter entry vectors to 
+	LD   HL,$GTIME3H	;alter entry vectors to
 	LD   ($GTIME3),HL	;clock maintenance routine
 	LD   HL,$STIME3H
 	LD   ($STIME3),HL
@@ -3896,7 +3896,7 @@ $CLSGR:	XOR  A			;colour = black
 LOOP:	ADD  HL,DE		;calc total number of scan lines - 1
 	DJNZ LOOP
 	DEC  HL
-	LD   (YMAX),HL		;store them		
+	LD   (YMAX),HL		;store them
 
 ;build table of y-addresses:
 	LD   BC,(VIDPAR+5)	;number of text lines --> reg. B
@@ -3930,7 +3930,7 @@ NOLOOP:	PUSH DE			;save it
 
 	LD   BC,(VIDPAR+8)	;number of scan lines per text line --> reg. B
 	INC  B
-	LD   HL,0			
+	LD   HL,0
 NILOOP:	ADD  HL,DE		;y-coordinate * # of scan lines
 	DJNZ NILOOP
 
@@ -3951,7 +3951,7 @@ NILOOP:	ADD  HL,DE		;y-coordinate * # of scan lines
 	LD   A,(HL)
 	LD   (IX),A
 	INC  IX
-	
+
 	POP  DE			;restore scan line counter
 	INC  DE			;increment it
 	LD   HL,450		;total count of scan lines --> reg. HL
@@ -4014,7 +4014,7 @@ $DISP:	LD  C,A			;save accu
 	JR  Z,DISP1		;jump if page 0
   	SET 4,A			;select page 1
 DISP1:	OUT ($SYS0),A		;write system byte 0
-	
+
 	IN  A,($SYS1)		;read system byte 1
 	AND 11010101B		;7.2 MHz clock rate
 				;disable graphic page
@@ -4081,8 +4081,8 @@ CLS2:	LD  (HL),A
 ;*  $ P L O T  *
 ;***************
 
-;entry:  A = 0  non-normalized (high nibble) 
-;	     1      normalized 
+;entry:  A = 0  non-normalized (high nibble)
+;	     1      normalized
 ;	     0  black          (low  nibble)
 ;	     1  white
 ;        B = graphic page number (0, 1)
@@ -4094,7 +4094,7 @@ $PLOT:	PUSH BC			;save graphic page #
 	PUSH DE			;save x-coordinate
 	AND  0F0H		;normalize y-coordinate ?
 	JR   Z,PLOT1		;jump if not
-	
+
 ;normalize y-coordinate:
       	EX   DE,HL		;y-coordinate 		  --> reg. DE
 	OR   A			;clear carry flag
@@ -4104,13 +4104,13 @@ $PLOT:	PUSH BC			;save graphic page #
 	JR   C,PLOT2		;jump if overflow
 
       	PUSH DE			;save x-coordinate
-	
+
  	ADD  HL,HL        	;make word index
 	LD   DE,YNTAB		;^y-addresses --> reg. DE
 	ADD  HL,DE		;get entry address
 	LD   E,(HL)		;y-address    --> reg. DE
 	INC  HL
-	LD   D,(HL) 
+	LD   D,(HL)
 	JR   PLOT4
 
 
@@ -4126,13 +4126,13 @@ PLOT2:	POP  HL			;adjust stack
 	RET
 
 PLOT3:	PUSH DE			;save x-coordinate
-	
+
  	ADD  HL,HL        	;make word index
 	LD   DE,YTAB		;^y-addresses --> reg. DE
 	ADD  HL,DE		;get entry address
 	LD   E,(HL)		;y-address    --> reg. DE
 	INC  HL
-	LD   D,(HL) 
+	LD   D,(HL)
 
 PLOT4:	POP  HL			;get x-coordinate
 ;divide x-coordinate by 8:
@@ -4216,7 +4216,7 @@ YNTAB:	DEFS 900		;address of all normalized y-coordinates
 
 $POINT:	PUSH BC			;save graphic page #
 	PUSH DE			;save x-coordinate
-	
+
 POINT1:	EX   DE,HL		;y-coordinate 		    --> reg. DE
 	OR   A			;clear carry flag
  	LD   HL,(YMAX)		;total number of scan lines --> reg. HL
@@ -4228,13 +4228,13 @@ POINT2:	XOR  A			;clear accu
 	RET
 
 POINT3:	PUSH DE			;save x-coordinate
-	
+
  	ADD  HL,HL        	;make word index
 	LD   DE,YTAB		;^y-addresses --> reg. DE
 	ADD  HL,DE		;get entry address
 	LD   E,(HL)		;y-address    --> reg. DE
 	INC  HL
-	LD   D,(HL) 
+	LD   D,(HL)
 
       	POP  HL			;get x-coordinate
 ;divide x-coordinate by 8:
@@ -4305,8 +4305,8 @@ BITTST:	DEFS 1
 ;*  $ L I N E  *
 ;***************
 
-;entry:  A = 0  non-normalized (high nibble) 
-;	     1      normalized 
+;entry:  A = 0  non-normalized (high nibble)
+;	     1      normalized
 ;	     0  black          (low  nibble)
 ;	     1  white
 ;        B = graphic page number (0, 1)
@@ -4318,7 +4318,7 @@ $LINE:	PUSH BC			;save page number
 	LD   A,10H		;source bank      = 1
 				;destination bank = 0
 	LD   DE,X1		;^coordinates --> reg. DE
-	LD   B,8		;byte count   --> reg. BC	
+	LD   B,8		;byte count   --> reg. BC
 	CALL $XMOVE		;get coordinates
 	POP  AF			;get mode
 	LD   C,A		;save colour
@@ -4351,12 +4351,12 @@ LINE2:	ADD  HL,DE		;y-coordinate * # of scan lines
 LINE3:	LD   (IX+1),H		;store normalized y-coordinate
 	LD   (IX),L
 	INC  IX			;get ^second y-coordinate
-	INC  IX 		
-	INC  IX 
+	INC  IX
+	INC  IX
 	INC  IX
 	POP  BC			;restore counter
 	DJNZ LINE1		;normalize second y-coordinate
-	 	
+
 ;calc px and dx:
 LINE4:	LD   HL,0		;clear pp
 	LD   (PP),HL
@@ -4367,13 +4367,13 @@ LINE4:	LD   HL,0		;clear pp
 	LD   BC,1		;dx = 1
 	JR   LINE6
 LINE5:	LD   BC,-1		;dx = -1
-	EX   DE,HL		
+	EX   DE,HL
 LINE6:	LD   (DX),BC		;store dx
 	OR   A
 	SBC  HL,DE		;px = x2 - x1 + 1 (x1 - x2 + 1)
 	INC  HL
 	LD   (PX),HL
-	
+
 ;calc py and dy:
       	LD   HL,(Y2)		;second y-coordinate --> reg. HL
 	LD   DE,(Y1)		;first  y-coordinate --> reg. DE
@@ -4382,13 +4382,13 @@ LINE6:	LD   (DX),BC		;store dx
 	LD   BC,1		;dy = 1
 	JR   LINE8
 LINE7:	LD   BC,-1		;dy = -1
-	EX   DE,HL		
+	EX   DE,HL
 LINE8:	LD   (DY),BC		;store dx
 	OR   A
 	SBC  HL,DE		;py = y2 - y1 + 1 (y1 - y2 + 1)
 	INC  HL
 	LD   (PY),HL
-	
+
 ;plot first dot:
 	CALL LPLOT		;plot first point of line
 
@@ -4403,7 +4403,7 @@ XLIN:	LD   HL,(X1)
 	JP   Z,ENDLIN		;break if yes
 	LD   HL,(PP)		;pp += py
 	LD   DE,(PY)
-	ADD  HL,DE	
+	ADD  HL,DE
 	LD   (PP),HL
 	LD   DE,(PX)
 	CALL CMP		;pp >= px
@@ -4420,7 +4420,7 @@ XLIN1:	LD   HL,(X1)		;x1 += dx
 	ADD  HL,DE
 	LD   (X1),HL
 	CALL LPLOT		;plot next point of line
-	JR   XLIN 	
+	JR   XLIN
 
 ;py > px:
 YLIN:	LD   HL,(Y1)
@@ -4429,7 +4429,7 @@ YLIN:	LD   HL,(Y1)
 	JR   Z,ENDLIN		;break if yes
 	LD   HL,(PP)		;pp += px
 	LD   DE,(PX)
-	ADD  HL,DE	
+	ADD  HL,DE
 	LD   (PP),HL
 	LD   DE,(PY)
 	CALL CMP		;pp >= py
@@ -4474,22 +4474,22 @@ Y1:	DEFS 2
 X2:	DEFS 2
 Y2:	DEFS 2
 M1:
-PX:	DEFS 2	
+PX:	DEFS 2
 M2:
 PY:	DEFS 2
 DD:
 PP:     DEFS 2
-N1:	
+N1:
 XB:
 XB1:	DEFS 2
-N2:	
+N2:
 XB2:	DEFS 2
 II:
 N3:	DEFS 2
 P1:	DEFS 2
 P2:	DEFS 2
 DX:	DEFS 2
-DY:	DEFS 2 
+DY:	DEFS 2
 
 
 *EJECT
@@ -4509,7 +4509,7 @@ $CIRCLE:PUSH BC			;save page number
 	LD   A,10H		;source bank      = 1
 				;destination bank = 0
 	LD   DE,XM		;^coordinates --> reg. DE
-	LD   B,6		;byte count   --> reg. BC	
+	LD   B,6		;byte count   --> reg. BC
 	CALL $XMOVE		;get coordinates
 
 	LD   HL,0		;dd = yy = 0
@@ -4532,7 +4532,7 @@ $CIRCLE:PUSH BC			;save page number
 	EX   DE,HL
 	LD   HL,(YM)		;ym      --> reg. HL
 	CALL CPLOT
-		
+
 	LD   HL,(XM)		;xm - xx --> reg. DE
 	LD   DE,(XX)
 	OR   A
@@ -4540,20 +4540,20 @@ $CIRCLE:PUSH BC			;save page number
 	EX   DE,HL
 	LD   HL,(YM)		;ym      --> reg. HL
 	CALL CPLOT
-		
+
 	LD   HL,(YM)		;ym + xx --> reg. HL
 	LD   DE,(XX)
 	ADD  HL,DE
 	LD   DE,(XM)		;xm      --> reg. DE
 	CALL CPLOT
-		
+
 	LD   HL,(YM)		;ym - xx --> reg. HL
 	LD   DE,(XX)
 	OR   A
 	SBC  HL,DE
 	LD   DE,(XM)		;xm      --> reg. DE
 	CALL CPLOT
-		
+
 *EJECT
 ;circle loop:
 
@@ -4610,7 +4610,7 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	LD   BC,(YY)
 	ADD  HL,BC
 	CALL CPLOT
-		
+
         LD   HL,(XM)		;xm - xx --> reg. DE
 	LD   DE,(XX)
 	OR   A
@@ -4620,7 +4620,7 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	LD   BC,(YY)
 	ADD  HL,BC
 	CALL CPLOT
-		
+
         LD   HL,(XM)		;xm + xx --> reg. DE
 	LD   DE,(XX)
 	ADD  HL,DE
@@ -4630,7 +4630,7 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	OR   A
 	SBC  HL,BC
 	CALL CPLOT
-		
+
         LD   HL,(XM)		;xm - xx --> reg. DE
 	LD   DE,(XX)
 	OR   A
@@ -4641,7 +4641,7 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	OR   A
 	SBC  HL,BC
 	CALL CPLOT
-		
+
         LD   HL,(XM)		;xm + yy --> reg. DE
 	LD   DE,(YY)
 	ADD  HL,DE
@@ -4650,7 +4650,7 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	LD   BC,(XX)
 	ADD  HL,BC
 	CALL CPLOT
-		
+
         LD   HL,(XM)		;xm - yy --> reg. DE
 	LD   DE,(YY)
 	OR   A
@@ -4660,7 +4660,7 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	LD   BC,(XX)
 	ADD  HL,BC
 	CALL CPLOT
-		
+
         LD   HL,(XM)		;xm + yy --> reg. DE
 	LD   DE,(YY)
 	ADD  HL,DE
@@ -4670,7 +4670,7 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	OR   A
 	SBC  HL,BC
 	CALL CPLOT
-		
+
         LD   HL,(XM)		;xm - yy --> reg. DE
 	LD   DE,(YY)
 	OR   A
@@ -4681,14 +4681,14 @@ CIRCLE3:LD   HL,(XM)		;xm + xx --> reg. DE
 	OR   A
 	SBC  HL,BC
 	CALL CPLOT
-		
+
 	LD   HL,(XX)
 	LD   DE,(YY)
 	CALL CMP		;jump if
 	JP   P,CIRCLE1		;xx >= yy
 
 	POP  HL			;adjust stack
-	POP  HL	
+	POP  HL
 	RET
 
 ;plot (xx, yy):
@@ -4718,7 +4718,7 @@ $ARC:   PUSH BC			;save page number
 	LD   A,10H		;source bank      = 1
 				;destination bank = 0
 	LD   DE,XM		;^coordinates --> reg. DE
-	LD   B,12		;byte count   --> reg. BC	
+	LD   B,12		;byte count   --> reg. BC
 	CALL $XMOVE		;get coordinates
 
 	LD   HL,0		;dd = 0
@@ -4751,17 +4751,17 @@ $ARC:   PUSH BC			;save page number
 	LD   BC,(YY)
 	ADD  HL,BC
 	CALL CPLOT
-		
-		
+
+
 *EJECT
 ;arc loop:
 
 ;calc next coordinates:
-ARC1:   LD   HL,(YY)		
+ARC1:   LD   HL,(YY)
 	BIT  7,H		;jump if
 	JR   NZ,ARC2		;yy < 0
 	LD   HL,-1		;dx = -1
-	LD   (DX),HL   
+	LD   (DX),HL
 	LD   HL,(XX)		;m1 = 1 - (xx + xx)
 	ADD  HL,HL
 	EX   DE,HL
@@ -4777,7 +4777,7 @@ ARC2:	LD   HL,(XX)		;m1 = 1 + xx + xx
 	ADD  HL,DE
 ARC3:	LD   (M1),HL
 
-        LD   HL,(XX)		
+        LD   HL,(XX)
 	BIT  7,H		;jump if
 	JR   NZ,ARC4		;xx < 0
      	LD   HL,(YY)		;m2 = 1 + yy + yy
@@ -4816,11 +4816,11 @@ ARC5:	LD   (M2),HL
 	LD   DE,(N1)
 	CALL CMP		;jump if
 	JR   C,ARC8   		;n1 >= n2
-	JR   Z,ARC8   
+	JR   Z,ARC8
 	LD   HL,(N3)
 	CALL CMP		;jump if
 	JR   C,ARC6   		;n1 >= n3
-	JR   Z,ARC6   
+	JR   Z,ARC6
 
 	LD   HL,(XX)		;xx += dx
 	LD   DE,(DX)
@@ -4863,7 +4863,7 @@ ARC9:   LD   HL,(XM)		;xm + xx --> reg. DE
 	LD   BC,(YY)
 	ADD  HL,BC
 	CALL CPLOT
-		
+
 	LD   HL,(XX)
 	LD   DE,(X2)
 	CALL CMP		;jump if
@@ -4874,7 +4874,7 @@ ARC9:   LD   HL,(XM)		;xm + xx --> reg. DE
 	JP   NZ,ARC1		;yy != y2
 
 	POP  HL			;adjust stack
-	POP  HL	
+	POP  HL
 	RET
 
 
@@ -4883,8 +4883,8 @@ ARC9:   LD   HL,(XM)		;xm + xx --> reg. DE
 ;*  $ F I L L  *
 ;***************
 
-;entry:  A = 0  non-normalized   	(high nibble) 
-;	     1      normalized 
+;entry:  A = 0  non-normalized   	(high nibble)
+;	     1      normalized
 ;	     graphic page number (0, 1) (low  nibble)
 ;	BC = ^fill pattern
 ;       HL = y-coordinate within shape
@@ -4926,11 +4926,11 @@ $COPY:	LD   (UBUF),DE		;save ^user buffer
 	CP   0FH		;source == user buffer ?
 	JP   Z,COPY10		;jump if yes
 	PUSH AF
-	
+
 	LD   A,10H		;source bank      = 1
 				;destination bank = 0
 	LD   DE,X1		;^parameter block --> reg. DE
-	LD   B,12		;byte count       --> reg. BC	
+	LD   B,12		;byte count       --> reg. BC
 	CALL $XMOVE		;get coordinates
 
 *EJECT
@@ -5005,7 +5005,7 @@ COPY6:	LD   HL,(XM)
 	LD   DE,(X1)
 	CALL CMP		;jump if
 	JR   Z,COPY7		;xx == x1
-	
+
 	POP  BC			;source page # --> reg. B
 	PUSH BC
 	LD   HL,(YM)		;y-coordinate  --> reg. HL
@@ -5023,7 +5023,7 @@ COPY6:	LD   HL,(XM)
 	LD   HL,(XM)		;xx += dx
 	LD   DE,(PX)
 	ADD  HL,DE
-	LD   (XM),HL	
+	LD   (XM),HL
 	LD   HL,(X2)		;x2 += dx
 	ADD  HL,DE
 	LD   (X2),HL
@@ -5047,7 +5047,7 @@ COPY9:	POP  HL
 COPY10:	LD   A,10H		;source bank      = 1
 				;destination bank = 0
 	LD   DE,X2		;^parameter block --> reg. DE
-	LD   B,8 		;byte count       --> reg. BC	
+	LD   B,8 		;byte count       --> reg. BC
 	CALL $XMOVE		;get coordinates
 
 ;setup variables:
@@ -5100,7 +5100,7 @@ COPY13:	LD   HL,(XX)
 	LD   DE,(X2)
 	CALL CMP		;jump if
 	JR   Z,COPY16 		;xx == x2
-	
+
 	LD   HL,LINBUF		;^temp buffer --> reg. HL
 	LD   DE,(II)		;divide buffer index by 8
 	XOR  A
@@ -5160,7 +5160,7 @@ COPY17:	LD   A,C		;restore source page
 	LD   A,10H		;source bank      = 1
 				;destination bank = 0
 	LD   DE,X2		;^parameter block --> reg. DE
-	LD   B,8 		;byte count       --> reg. BC	
+	LD   B,8 		;byte count       --> reg. BC
 	CALL $XMOVE		;get coordinates
 
 ;setup variables:
@@ -5205,7 +5205,7 @@ COPY20:	LD   HL,(XX)
 	LD   DE,(X2)
 	CALL CMP		;jump if
 	JR   Z,COPY22 		;xx == x2
-	
+
        	POP  BC			;graphic page number # --> reg. B
 	PUSH BC
 	LD   HL,(YY)		;y-coordinate 	       --> reg. HL
@@ -5283,7 +5283,7 @@ DIV1:	RL   C			;rotate result left
 	EX   DE,HL		;remainder --> reg. DE
 	LD   H,A		;quotient  --> reg. HL
 	LD   L,C
-	RET  
+	RET
 
 ;compare HL with DE:
 CMP:	PUSH HL			;save reg. HL
@@ -5350,12 +5350,12 @@ RTC2:	CALL BEEP		;alarm
 RTC3:	LD   HL,RTC$TICK$COUNT	;downdate tick count
 	DEC  (HL)
 	JR   NZ,INT6		;is not at 0 yet
-	LD   (HL),45		;one second has elapsed so 
+	LD   (HL),45		;one second has elapsed so
 				;reset to original value
 
 	LD   A,(CLOCK)		;hardware clock ?
 	OR   A
-	JR   NZ,INT2		;jump if yes	
+	JR   NZ,INT2		;jump if yes
 
 	LD   B,3		;maximum number of values to update
 	LD   DE,TIME$IN$BCD$END	;DE -> seconds of BCD time
@@ -5382,7 +5382,7 @@ INT2:	LD   A,(CLOCKON)
 	JR   Z,INT6		;jump if not
 	LD   A,(CLOCK)		;hardware clock ?
 	OR   A
-	JR   Z,INT3		;jump if not 
+	JR   Z,INT3		;jump if not
 	LD   HL,BINARY$DATE	;^time & date buffer --> reg. HL
 	LD   (INT),A		;mark interrupt service routine
 	CALL $GTIME3H		;read hardware clock
@@ -5392,7 +5392,7 @@ INT3:	LD   HL,TIME$IN$BCD	;^BCD   time --> reg. HL
 	LD   DE,$ATIME		;^ASCII time --> reg. DE
 	LD   B,3		;convert hours, minutes, and seconds
 INT4:	CALL BCDASC
-	DJNZ INT4			
+	DJNZ INT4
 	IN   A,($SYS1)		;read system byte 1
 	PUSH AF			;save it
 	AND  11111110B		;enable memory mapped I/O
@@ -5407,10 +5407,10 @@ INT5:	LD   A,(DE)		;get screen character
 	LD   (DE),A		;display clock character
 	INC  DE			;get next clock character
 	INC  HL			;get next screen location
-	DJNZ INT5		;display whole clock	
+	DJNZ INT5		;display whole clock
 	POP  AF			;restore system byte 1
 	OUT  ($SYS1),A
-	
+
 INT6:	POP  IY
 	POP  IX
      	POP  HL			;restore user register set
@@ -5430,10 +5430,10 @@ BCDASC:	LD   A,(HL)		;get high nibble
         LD   A,(HL)		;get low nibble
 	AND  0FH		;get low nibble
 	ADD  A,'0'		;convert to ASCII
-	INC  DE   
+	INC  DE
 	INC  HL
 	LD   (DE),A		;store low digit
-	INC  DE			;bump over colon 
+	INC  DE			;bump over colon
 	INC  DE
 	RET
 
@@ -5501,7 +5501,7 @@ $XMOVE:	LD   C,A		;save source/dest bank #'s
 	POP  AF			;restore current bank #
 	OUT  ($SYS0),A		;select it
 	RET
-		
+
 ;select memory bank:
 SWITCH:	RRCA			;lowest two bits --> highest two bits
 	RRCA
@@ -5513,7 +5513,7 @@ SWITCH:	RRCA			;lowest two bits --> highest two bits
 				;disable character RAM
 	OR   D			;set bank number
 	OUT  ($SYS0),A		;write system byte 0
-	RET	 
+	RET
 
 SBUF:	DEFS 128		;scratch buffer
 
@@ -5697,4 +5697,3 @@ REQWAIT:IN   A,(RPORT1)		;get cntlr status bits
 	ENDC
 
 	END
-	

@@ -7,17 +7,17 @@
 ;*									      *
 ;*									      *
 ;*  Thomas Holte						 Version 1.0  *
-;*									      *	
+;*									      *
 ;*									      *
 ;*									      *
 ;******************************************************************************
 ;
 ; Jetzt angepasst an Tandon TM 262 HD mit 20 MB . 3.Aug 1993
 ;
-; Nun an Seagate ST 225 mit 2 Partitionen. Die Charakteristik von 
+; Nun an Seagate ST 225 mit 2 Partitionen. Die Charakteristik von
 ; Partition 1 wird in LDRBIOHD zum Bootvorgang von der Festplatte ben|tigt
 ;
-  
+
 	.Z80
 
 ;ASCII control codes:
@@ -66,7 +66,7 @@ PUSHHL	EQU  0E5H		;machine code of PUSH HL
 	JP   DUMMY
 	JP   DUMMY
 	JP   DUMMY
- 	
+
 
 *EJECT
 BOOT:
@@ -75,7 +75,7 @@ BOOT:
 ;Initial entry point for system startup.
 
 	JP   ?INIT		;perform any additional system initialization
-				;and print signon message 
+				;and print signon message
 
 
 CONOUT:
@@ -119,7 +119,7 @@ DS0:  	DEFW 0			;no translation table
 	DEFW 0            	;no CSV
 	DEFW ALV0  		;allocation vector
 	DEFW DIRBCB		;DIRBCB alloc'd by GENCPM
-	DEFW DTABCB	
+	DEFW DTABCB
 	DEFW 0FFFFH		;no HASH
 	DEFB 0			;hash bank
 
@@ -130,12 +130,12 @@ DS0:  	DEFW 0			;no translation table
 ;:---------------------------------:
 ; this data are from hddtbl.asm
 ;
- 
+
 DPB0:	DEFB	10h,01h	    ;SPT= 272      128 Byte records/track
-	DEFB	005h	    ;BSH=   5      block shift factor  
-        DEFB	01fh	    ;BLM=  31      block mask   
-	DEFB	001H        ;EXM=   1      extend mask  
-        DEFB    06aH,14H    ;DSM=	   maximum block number 
+	DEFB	005h	    ;BSH=   5      block shift factor
+        DEFB	01fh	    ;BLM=  31      block mask
+	DEFB	001H        ;EXM=   1      extend mask
+        DEFB    06aH,14H    ;DSM=	   maximum block number
 	DEFW	2047        ;DRM=1024      maximum directory number
 	DEFB	0FFH,0FFH   ;AL0= 255      allocation vector 0
         		    ;AL1= 000      allocation vector 1
@@ -143,7 +143,7 @@ DPB0:	DEFB	10h,01h	    ;SPT= 272      128 Byte records/track
                             ;              ,permanently mounted
 	DEFW	2	    ;OFF=   2      reserved tracks of partition 1
  	DEFB	2,3         ;PSH=   2      physical sector shift
-			    ;PHM=   3      physical record mask 
+			    ;PHM=   3      physical record mask
 
 ;directory buffer control block:
 
@@ -225,7 +225,7 @@ hds0:	or	c
 	ld	a,b		; head #
 	ld	(head),a
 
-	
+
 
 ;	read sector into dma buffer
 rdsect:	di			; disable interrupts
@@ -273,7 +273,7 @@ tr$3:	call	pr_msg		; print message
 exit:	ret			; return with status in accu
 
 
-															
+
 
 SECTRN:
 ;======
@@ -363,7 +363,7 @@ hdmsg2:	db	bel,cr,lf
 	db	'Hard Disk Read Error  !'
 	db	cr,lf,lf,0
 
-; Subroutine Area				
+; Subroutine Area
 
 pr_msg:	ld	a,(hl)
 	cp	0
@@ -372,8 +372,8 @@ pr_msg:	ld	a,(hl)
 	call	conout
 	inc	hl
 	jr	pr_msg
-	
-	
+
+
 
 ; hard disk subroutines
 
@@ -412,7 +412,7 @@ bcount:	db	1		; block count
 termin:	db	2		; step rate --> 25 us
 
 hd_charact:			; drive characteristics
-				; 614 cylinders, 4 heads 
+				; 614 cylinders, 4 heads
 	db	2		; last cylinder  (msb)
 	db	67h		; last cylinder  (lsb)
 	db	4		; 4 heads
@@ -421,8 +421,8 @@ hd_charact:			; drive characteristics
 	db	0		; always zero
 
 ifield:	db	0,0,0,0,0	; hard disk init-parameter field
-								
-			
+
+
 
 *EJECT
 ;table of driver entry vectors:
@@ -498,8 +498,7 @@ SAVESP: DEFS 2			;temporary memory for stack pointer
 
 ALV0    EQU  $
 DIR     EQU  ALV0+203
-DATA   	EQU  DIR+512 
-SPARE$DIRECTORY EQU DATA+512 
+DATA   	EQU  DIR+512
+SPARE$DIRECTORY EQU DATA+512
 
 	END
-

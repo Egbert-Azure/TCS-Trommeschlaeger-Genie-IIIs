@@ -10,7 +10,7 @@
 ;*                                                                            *
 ;******************************************************************************
 
-        
+
         TITLE 'CP/M 3 DISKETTE HANDLER'
 
         DSEG
@@ -259,7 +259,7 @@ DPBF:    DEFW 80                  ;128 byte records per track
         DSEG                    ;rest in banked memory
 
 ;RAM disk init routine:
-POWUP   EQU  111DH                ;power up/reset marker    
+POWUP   EQU  111DH                ;power up/reset marker
 
 M$INIT0:LD   A,(POWUP)             ;power up ?
         OR   A
@@ -306,7 +306,7 @@ FD$READ:LD   A,(@SECT)             ;sector number          --> reg. B
         CALL ?USERF              ;read physical disk sector
         LD   (DISK$STATUS),A       ;save status for error messages
         OR   A                     ;any errors ?
-        JP   NZ,RDERR      
+        JP   NZ,RDERR
         RET
 
 ;suppress error message if BDOS is returning errors to application ...
@@ -333,7 +333,7 @@ RDERR:  LD   A,(@ERDME)
         CALL U$CONIN$ECHO        ;get operator response
         LD   C,A           ;save response
         LD   HL,MSG$END            ;disable status line
-        CALL ?PMSG       
+        CALL ?PMSG
         LD   A,C           ;restore response
         CP   'Y'           ;yes, then retry 10 more times
         JP   Z,FD$READ
@@ -389,7 +389,7 @@ WRERR:  LD   A,(@ERDME)
         CALL U$CONIN$ECHO        ;get operator response
         LD   C,A           ;save response
         LD   HL,MSG$END            ;disable status line
-        CALL ?PMSG       
+        CALL ?PMSG
         LD   A,C           ;restore response
         CP   'Y'           ;yes, then retry 10 more times
         JP   Z,FD$WRITE
@@ -479,7 +479,7 @@ P$TASK: LD   A,(DRIVEP-2)  ;relative drive number      --> accu
         ADD  A,A          ;*4
         ADD  A,C          ;*6
         LD   B,0           ;relative drive # * 6         --> reg. BC
-        LD   C,A           
+        LD   C,A
         LD   HL,DCT                ;^drive control table     --> reg. HL
         ADD  HL,BC                ;calc real pointer
         PUSH HL                  ;save DCT pointer
@@ -516,7 +516,7 @@ R$ERROR$TABLE:
         DEFW R7MSG
         DEFW R8MSG
         DEFW R9MSG
-        
+
 W$ERROR$TABLE:
         DEFW W1MSG
         DEFW W2MSG
@@ -527,7 +527,7 @@ W$ERROR$TABLE:
         DEFW W7MSG
         DEFW W8MSG
         DEFW W9MSG
-        
+
 R1MSG:  DEFM ' Illegal drive #,'
         DEFB 0
 R2MSG:  DEFM ' Track # too high,'

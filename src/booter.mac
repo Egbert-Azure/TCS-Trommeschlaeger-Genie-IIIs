@@ -12,13 +12,13 @@
 ;*  Thomas Holte			                         Version 1.1  			  *
 ;*									      									  *
 ;*  geändert von Volker Dose für Egbert Schröer.			      			  *
-;*  									      								  *	
+;*  									      								  *
 ;*  Die Übertragung der Seriennummer vom Bildschirm in den Speicher           *
 ;*  zur Copyright-Protection wird gelöscht. Statt dessen werden NOPs          *
 ;*  eingebaut, um dort eventuell Code für Z180 Betrieb zu patchen.            *
 ;*									      									  *
 ;******************************************************************************
-  
+
 	.Z80
 
 	ASEG
@@ -55,16 +55,16 @@ $SYS1	EQU  0FAH		;port of system byte 1
 ;	LD   DE,SERNO		;save location			--> reg. DE
 ;MOVE:	LD   A,(HL)		;get first byte of serial #
 ;	LD   (DE),A 		;store it
-;	INC  HL			;inc ^source 
+;	INC  HL			;inc ^source
 ;	INC  DE			;inc ^destination
 ;	DEFB 0DDH,2DH		;DEC LX      dec counter
 ;	JR   NZ,MOVE		;get next byte
 
-	nop			; Nops, damit das File dir selbe  
+	nop			; Nops, damit das File dir selbe
 	nop			; L{nge beh{lt, und um dort die
-	nop			; Einstellung der Waitzyklen f}r	
+	nop			; Einstellung der Waitzyklen f}r
 	nop			; Betrieb mit Z180 zu patchen.
-	nop			;	
+	nop			;
 	nop			; Kann bei Betrieb mit Z80 aber auch
 	nop			; wieder ge{ndert werden.
 	nop
@@ -76,7 +76,7 @@ $SYS1	EQU  0FAH		;port of system byte 1
 	nop
 	nop
 	nop
-		
+
 
 
 
@@ -113,7 +113,7 @@ LOOP: 	PUSH BC        		;save it
 	CP   20			;track exhausted ?
 	JR   NZ,NXTSEC		;jump if not
 	CALL STEPIN		;step in one track
-	XOR  A			;reset sector #	
+	XOR  A			;reset sector #
 NXTSEC: LD   (SECTOR),A		;store sector #
 	POP  BC			;restore sector counter
      	DJNZ LOOP		;read next sector
@@ -121,13 +121,13 @@ NXTSEC: LD   (SECTOR),A		;store sector #
 ;move common code to the right place:
 	LD   HL,3505H          	;source address      --> reg. HL
 	LD   DE,0FE05H		;destination address --> reg. DE
-	LD   BC,1FBH            ;byte count	     --> reg. BC	
+	LD   BC,1FBH            ;byte count	     --> reg. BC
 	LDIR
 
 ;move CP/M loader to the right place:
 	LD   HL,3700H          	;source address      --> reg. HL
 	LD   DE,4400H		;destination address --> reg. DE
-	LD   BC,0C80H           ;byte count	     --> reg. BC	
+	LD   BC,0C80H           ;byte count	     --> reg. BC
 	LDIR
 	JP   4400H		;jump into CP/M loader
 
@@ -161,7 +161,7 @@ SELECT: OUT  ($FDSEL),A         ;select drive and side
 	LD   A,(SECTOR)		;sector # --> accu
 	CP   10			;back side ?
 	JR   C,SETSEC		;jump if front side
-	SUB  10			;adjust sector # 
+	SUB  10			;adjust sector #
 SETSEC: OUT  ($FDSEC),A         ;store sector # in FDC reg
         LD   HL,(BUFFER)        ;get buffer pointer
         LD   A,$RDSEC        	;issue "read" command
@@ -212,7 +212,7 @@ BUFFER:	DEFW 0000               ;current load address
 ERROR:	LD   A,11000100B	;enable memory mapped I/O
 	OUT  ($SYS1),A		;write system byte 1
 
-	LD   HL,MSG		;^message		--> reg. HL	
+	LD   HL,MSG		;^message		--> reg. HL
         LD   DE,3C00H		;^first screen position --> reg. DE
 	LD   BC,COPYRGT-MSG	;length of message	--> reg. BC
 	LDIR			;output error message
@@ -230,13 +230,13 @@ BUZZON:	NOP			;little delay for lower frequency
 	JR   NZ,BUZZON		;wait `til end of buzz
 	POP  BC			;restore wait counter
 	DJNZ BEEP		;turn on buzzer eleven times
-	
+
 	LD   BC,8000
         CALL DELAY
 
 	POP  BC			;restore beep counter
 	DJNZ ALARM		;beep 100 times
-	JR   $			;hang up		
+	JR   $			;hang up
 
 MSG:	DEFM 'DISK ERROR'
 
