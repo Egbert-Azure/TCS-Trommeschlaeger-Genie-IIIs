@@ -106,7 +106,7 @@ LOOP: 	PUSH BC        		;save it
 	LD   A,(SECTOR)
 	INC  A			;increment sector #
 
-;hierzu muß gesagt werden, das das COPYSYS leider nciht begreift, wie meine
+;hierzu muß gesagt werden, das das COPYSYS leider nicht begreift, wie meine
 ;Harddisk angelegt ist, also nicht 136 128Byte Einheiten wie im DPB sondern
 ;nur 80 Einheiten wie das Floppyformat. Also muss hier nach 20 Sektoren
 ;(entspricht 80 * 128Byte) der nächste Track angefahren werden
