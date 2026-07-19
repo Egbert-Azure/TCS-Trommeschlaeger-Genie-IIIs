@@ -37,6 +37,12 @@ under project file
 - Documentation:
   - `docs/`: User manual in PDF format
 
+## OMTI 5527 hard-disk support
+
+Seagate ST225 / OMTI 5527 SASI-MFM hard-disk BIOS additions (Peter Petersen, H. Bernhardt, Volker Dose, Egbert Schröer) live in their own `src-omti/` folder, kept separate from the original Holte sources in `src/` — see `src-omti/List of sys components.md` for details on each module. `rom/g3s_hd-omti_bootrom_2764.bin` (written by Arnolf Sopp) is the boot EPROM that lets the system boot directly from the hard disk with no floppy inserted.
+
+An OMTI 5527 controller emulation for these sources exists in [sdltrsOMTI](https://github.com/Egbert-Azure/sdltrsOMTI), a fork of sdltrs/xtrs — including a full protocol writeup and a working, tested zero-floppy direct-hard-disk-boot setup.
+
 ## Getting Started
 
 1. Clone the repository:
