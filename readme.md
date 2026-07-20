@@ -43,6 +43,17 @@ Seagate ST225 / OMTI 5527 SASI-MFM hard-disk BIOS additions (Peter Petersen, H. 
 
 An OMTI 5527 controller emulation for these sources exists in [sdltrsOMTI](https://github.com/Egbert-Azure/sdltrsOMTI), a fork of sdltrs/xtrs — including a full protocol writeup and a working, tested zero-floppy direct-hard-disk-boot setup.
 
+## Hard-disk history
+
+`history/` consolidates every hard-disk BIOS lineage found across the wider
+disk collection into real, buildable snapshots — from Holte's 1985
+format-only Winchester support, through Peter Petersen's original 1987
+driver and its two divergent 1992/1993 branches (one of which is `src-omti/`
+itself), to an undated Seagate ST251 4-partition experiment. See
+[`history/README.md`](history/README.md) for the full timeline, and
+[`history/05-drive-p-alien-formats.md`](history/05-drive-p-alien-formats.md)
+for the virtual `P:` drive and the alien floppy formats it once read.
+
 ## Getting Started
 
 1. Clone the repository:
