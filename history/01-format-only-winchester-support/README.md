@@ -15,11 +15,14 @@ compile time. Five of those headers are already in `src/`:
 | `src/st412.h` | Seagate ST412 | 10.8 MB |
 | `basf6188.h` (not preserved as a file; quoted in `GenieIIIs/Holte CPM src/Hard drive definitions C P M S Y S 5 a.md`) | BASF 6188 | 12.6 MB |
 
-`tm252.h` in this folder is the sixth: the Tandon TM252 (10.4 MB) config,
-reconstructed byte-for-byte from the same markdown transcript — it was never
-committed as a standalone `.h` file in any surviving source tree, only quoted
-inline. It's included here for completeness of the format-only lineage; it
-was never wired into a build the way the others were.
+`tm252.h` in this folder is the sixth: the Tandon TM252 (10.4 MB) config. It
+was reconstructed from a markdown transcript in `GenieIIIs/Holte CPM src/`
+(no standalone `.h` file survived in this repo's own collection) and later
+confirmed byte-for-byte against the authentic file preserved in Jens
+Guenther's independent restoration — see
+`../00-jens-guenther-holte-cpm-fork/upstream/utils/tm252.h`. It's included
+here for completeness of the format-only lineage; it was never wired into a
+build the way the others were.
 
 None of these six ever got a matching runtime BIOS driver in the base
 system. That had to wait for Peter Petersen's `HD2.MAC` — see

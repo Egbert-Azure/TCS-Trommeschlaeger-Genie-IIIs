@@ -11,7 +11,8 @@ each as a real, buildable snapshot rather than just a description.
 
 | When | Who | What changed | Where |
 |---|---|---|---|
-| 1985 | Thomas Holte | Base system; `initw.c` formatter supports six Winchester models, but no runtime driver ever gets wired to them | `src/`, [`01-format-only-winchester-support/`](01-format-only-winchester-support/) |
+| 1985–1986 | Thomas Holte | Original release, independently restored by Jens Guenther from <https://gitlab.com/jengun/holte-cpm> — the closest thing here to "the origin," predating any hard-disk work | [`00-jens-guenther-holte-cpm-fork/`](00-jens-guenther-holte-cpm-fork/) |
+| 1985 | Thomas Holte | Base system as it survives in this repo; `initw.c` formatter supports six Winchester models, but no runtime driver ever gets wired to them | `src/`, [`01-format-only-winchester-support/`](01-format-only-winchester-support/) |
 | 19-Oct-1987 | Peter Petersen | `HD2.MAC` v3.2 created — the first real runtime hard-disk driver | [`02-omti-mainline-1987-1993/`](02-omti-mainline-1987-1993/) (earliest state known only from the changelog header; no standalone 1987 copy survives) |
 | 08-Jul-1990 | H. Bernhardt | Revises `HD2.MAC` ("weiter dran geschnitzt") | same |
 | 1989 | Fritz Chwolka | Merges divergent `DISKIO.MAC`/`TABLES.MAC`/`DRIVER.MAC` versions; strips hard-disk wiring to make room for format-conversion pseudo-drives — see [`05-drive-p-alien-formats.md`](05-drive-p-alien-formats.md) | `src-omti/diskio1.mac`'s own header |
@@ -21,6 +22,19 @@ each as a real, buildable snapshot rather than just a description.
 | 21-Dec-1993 | Egbert Schröer | Mainline: adapts to a Seagate ST225 (MFM/RLL) — **this exact state is what `src-omti/` in this repo preserves today** | same; compare with `src-omti/hd2.mac` |
 | undated | (unknown) | A wider experiment: Seagate ST251, 4 partitions, different naming convention (`hd1ini`, `hdsk0..hdsk3`) — doesn't match either surviving branch | [`04-omti-st251-4partition-experiment/`](04-omti-st251-4partition-experiment/) |
 | 2024–2026 | Egbert Schröer (+ tooling) | Modern preservation: `cpmextract` (DMK reader, validated against `egcpm01.dmk`), `sdltrsOMTI` (OMTI 5527 controller emulation, reverse-engineered from `hd2.mac`/`ldrbiohd.mac`), and this `history/` consolidation | `cpmextract`, `sdltrsOMTI` repos |
+
+## An independent fork, cross-checked
+
+[`00-jens-guenther-holte-cpm-fork/`](00-jens-guenther-holte-cpm-fork/) isn't
+part of the hard-disk lineage below — it's Jens Guenther's own restoration
+of Thomas Holte's original CP/M release, worked through independently over
+years of contact from the Club 80 computer-club days. Cross-checking it
+file-by-file against `src/` turned up a fixed bug (real byte corruption in
+`src/driver.mac`, one instance of which broke actual Z80 code), confirmed
+that this repo's `src/booter.mac` carries a personal copy-protection-removal
+customization absent from Holte's release, and turned up an undocumented
+"3× NEC D5126, 1MB" configuration string with no matching driver anywhere
+in this collection. Full write-up in that folder's own `README.md`.
 
 ## Two branches, not one line
 
@@ -38,13 +52,16 @@ complete original build-and-format workflow.
 
 ## What's preserved as-is
 
-Every file under `02-`, `03-`, and `04-` is copied byte-for-byte from its
-source (see each folder's own `README.md` for exactly where). Unlike
+Every file under `00-`, `02-`, `03-`, and `04-` is copied byte-for-byte from
+its source (see each folder's own `README.md` for exactly where). Unlike
 `src-omti/`, these are **not** cleaned up — original CRLF line endings and
 DIN 66003 "German ASCII" placeholder characters (`{`/`|`/`}`/`~` for
 `ä`/`ö`/`ü`/`ß`) are left exactly as found. The point of this folder is
 historical fidelity; `src/` and `src-omti/` are where active maintenance and
-readability fixes belong.
+readability fixes belong. The one exception: cross-checking `00-` against
+`src/driver.mac` found real encoding corruption (not a historical variant)
+in the living copy, which was fixed there directly — see
+`00-jens-guenther-holte-cpm-fork/README.md`.
 
 ## What's not here yet
 
