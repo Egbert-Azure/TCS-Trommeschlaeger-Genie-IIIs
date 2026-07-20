@@ -1,7 +1,7 @@
 # TCS Trommeschläger Genie IIIs: Holte CP/M 3.0
 
-This repository preserves and documents Thomas Holte's CP/M 3.0 (and CP/M
-2.2) system for the **TCS Trommeschläger Genie IIIs** — not to be confused
+This repository preserves and documents Thomas Holte's CP/M 3.0 system for
+the **TCS Trommeschläger Genie IIIs** — not to be confused
 with the plain **Genie III**, an earlier, unrelated machine manufactured by
 EACA (Hong Kong) that TCS merely distributed in Germany. Genie III (and
 EACA's COLOUR-GENIE) shipped with construction defects costly enough to fix
