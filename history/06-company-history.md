@@ -90,5 +90,8 @@ Schröer, who owned one) — this matches `src/initw.c`'s `#ifdef SASI` code
 path ("port addresses of Xebec SASI Controller," `TEST`/`REST`/`FORMAT`/
 `INIDRV` commands), which is Holte's *original* formatter code for that
 controller, as distinct from the `#else` Western Digital WD1000/1010 path
-in the same file. See `01-format-only-winchester-support/README.md` for
-how this fits with the Tandon drive TCS shipped.
+in the same file. This wasn't part of the base machine covered above —
+the hard disk (like the RTC) was an optional add-on TCS sold separately.
+See `01-format-only-winchester-support/README.md` for that correction, and
+`07-this-machine.md` for the specific machine — Egbert Schröer's own — that
+had one fitted.

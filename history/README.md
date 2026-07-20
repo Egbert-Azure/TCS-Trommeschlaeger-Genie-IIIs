@@ -1,23 +1,25 @@
 # A history of hard-disk support on the Genie IIIs
 
-The Genie IIIs was never a floppy-only machine — TCS shipped it with a
-Tandon 10 MB hard disk (via a Xebec SASI controller) built in from the
-start (see
+The base Genie IIIs, as TCS sold it, was floppy-only — a Tandon 10 MB hard
+disk (via a Xebec SASI controller) was an optional add-on, not standard
+equipment, and so was a real-time clock (see
 [`01-format-only-winchester-support/`](01-format-only-winchester-support/)
 for the correction to an earlier version of this history that got that
-wrong, and [`06-company-history.md`](06-company-history.md) for TCS's own
+wrong; [`06-company-history.md`](06-company-history.md) for TCS's own
 history — a company that sold roughly 200 Genie IIIs units before going
-bankrupt in 1985). What this folder actually tracks is the *software*
-history: how
-Holte's CP/M BIOS gained a working hard-disk driver, and how that driver
-was adapted across drives and years afterward. This repo's `src/` is
-Thomas Holte's base CP/M 3.0 system as it survives today (no runtime
-hard-disk driver in it, whatever originally drove the stock Tandon), and
-`src-omti/` is one specific, later hard-disk lineage grafted onto it.
-Between those two lie several other branches and experiments, scattered
-across disk images (`.dmk`) and source trees in sibling repositories on
-disk. This folder pulls the hard-disk-relevant ones together into one place,
-each as a real, buildable snapshot rather than just a description.
+bankrupt in 1985; and [`07-this-machine.md`](07-this-machine.md) for the
+specific machine — Egbert Schröer's own — that this whole collection
+traces back to). What this folder actually tracks is the *software*
+history: how Holte's CP/M BIOS gained a working hard-disk driver, and how
+that driver was adapted across drives and years afterward. This repo's
+`src/` is Thomas Holte's base CP/M 3.0 system as it survives today (no
+runtime hard-disk driver in it, whatever originally drove an add-on
+Tandon), and `src-omti/` is one specific, later hard-disk lineage grafted
+onto it. Between those two lie several other branches and experiments,
+scattered across disk images (`.dmk`) and source trees in sibling
+repositories on disk. This folder pulls the hard-disk-relevant ones
+together into one place, each as a real, buildable snapshot rather than
+just a description.
 
 ## Timeline
 

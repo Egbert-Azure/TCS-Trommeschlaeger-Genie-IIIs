@@ -8,9 +8,12 @@ EACA's COLOUR-GENIE) shipped with construction defects costly enough to fix
 that TCS designed its own improved successor in response, starting June
 1983: the **Genie IIIs** (note the trailing "s"), built in Germany with
 Siemens producing the electronics and TCS doing final assembly. It's this
-TCS-built Genie IIIs, Z80-based and TRS-80-compatible, that shipped with a
-Tandon 10 MB hard disk built in from the start (via a Xebec SASI controller
-— see `history/01-format-only-winchester-support/`). It sold only about 200
+TCS-built Genie IIIs, Z80-based and TRS-80-compatible, that this repo is
+about. The base machine was floppy-only — a Tandon 10 MB hard disk (via a
+Xebec SASI controller) was an optional add-on, not standard equipment, and
+so was a real-time clock (see `history/01-format-only-winchester-support/`
+for the correction, and `history/07-this-machine.md` for the specific
+machine this whole collection traces back to). It sold only about 200
 units, ever, and TCS itself went bankrupt in August 1985 — under two years
 after launch — as the market moved to the IBM PC. One of the last big CP/M
 machines, technically ahead of its time and too late anyway; see
