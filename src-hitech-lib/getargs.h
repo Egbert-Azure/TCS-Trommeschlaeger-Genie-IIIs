@@ -19,4 +19,3 @@ typedef struct {
 		 char *variable;	/* pointer to variable	    */
 		 char *errmsg;		/* pointer to error message */
 	       } ARG;
-

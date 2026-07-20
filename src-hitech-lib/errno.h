@@ -33,4 +33,3 @@ extern int errno;
 #define EROFS   30		/* read-only file-system     */
 #define EDOM    33		/* math argument	     */
 #define ERANGE  34		/* result too large	     */
-

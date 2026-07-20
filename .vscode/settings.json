@@ -13,6 +13,15 @@
         "editor.formatOnType": true,
     },
 
+    // src/initw.c, src-hitech-lib/*.h etc. use the same tab-padded box
+    // headers/comments as the z80-macroasm sources, built for tabSize 8
+    "[c]": {
+        "editor.tabSize": 8,
+        "editor.insertSpaces": false,
+        "editor.rulers": [80],
+        "files.eol": "\n",
+    },
+
     "z80-macroasm.files.include": "**/*.{z80,asm,inc,mac}",
     // enable seekSymbolsThroughWorkspace on non-modular projects without imports
     "z80-macroasm.seekSymbolsThroughWorkspace": false,
