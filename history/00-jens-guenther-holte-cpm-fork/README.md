@@ -77,7 +77,12 @@ NOP'd-out block, with its comment "Die Übertragung der Seriennummer vom
 Bildschirm in den Speicher zur Copyright-Protection wird gelöscht" (the
 transfer of the serial number for copyright protection is deleted), is
 Volker Dose disabling exactly this mechanism for Egbert Schröer's personal
-copy. Two independent repos, each preserving one half of the same removal.
+copy. Two independent repos, each preserving one half of the same removal —
+and mining the disk collection directly turned up a second, more mundane
+reason for the same change: see `../03-omti-schroeer-branch-1992/README.md`,
+which found a sibling file (`HDBOOTER.MAC` on `egcpm11.dmk`) giving a Z180
+opcode-crash bug as the explanation instead of copy-protection removal.
+Probably both are true at once.
 
 **`diskio.mac`/`drvtbl.mac`: this repo's `src/` already isn't pristine
 Holte.** Jens's copy (dated 27-Jul-1985) has a full seven-drive floppy-only
@@ -113,7 +118,7 @@ possibly an earlier or alternate banking scheme.
 
 `upstream/utils/` has nine utilities with no counterpart in this repo or
 any other `history/` folder, each following the `X.c` (source) /
-`Xe.mac`/`Xg.mac` (English/German-assembled?) naming convention already
+`Xe.mac`/`Xg.mac` (English/German-assembled) naming convention already
 familiar from `initw`/`initwe`/`initwg`: `backup`, `chargen` (a character/
 font generator — companion to `font12.mac`), `checktrk`, `config`, `copy`,
 `fkey` (function-key definitions), `format`, `formtrk`, and `m6845` (direct

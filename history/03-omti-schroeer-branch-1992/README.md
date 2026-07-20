@@ -45,3 +45,76 @@ the runtime driver:
 
 Like the mainline snapshot, this is preserved untouched, DIN 66003 artifacts
 and all.
+
+## Mined directly from Egbert's own disk collection
+
+The files above came from `sdltrsOMTI`'s prior extraction. Going one level
+further back, mining the disk collection directly
+(`GenieIIIs/DMK/Egbert/*.dmk`, via `cpmextract`, per `disks.md`'s own
+catalog) turned up more of this branch:
+
+- **`XCPM3.LIB`** — Peter Petersen's actual macro library (`dtbl`/`dph`/
+  `skew`/`dpb` macro definitions), referenced everywhere but never
+  recovered as a file until now. Byte-identical across every disk it
+  appears on (`egcpm06`, `egcpm12`, `egcpm13`) — a stable, unchanging part
+  of the toolchain. This is what `HDDTBL.ASM` needs (`maclib xcpm3`) to
+  actually assemble.
+
+- **`HD2.BAK` / `HD2-corrected-17sec.MAC`** (from `egcpm12.dmk`) — a
+  genuine before/after pair from one editing session, and it resolves a
+  real bug. `HD2.BAK` is word-for-word the mainline's Nov-1992 "10 MByte"
+  `HD2.MAC` (see `../02-omti-mainline-1987-1993/`). `HD2-corrected-17sec.MAC`
+  is the same file *after* Volker Dose edited it into this branch: header
+  rewritten to "Version für Egbert Schröer / Seagate ST225", the OMTI
+  drive-characteristics block updated (2 heads→4, last cylinder 99→67h,
+  write-precomp/reduced-current cylinders updated), and — this is the
+  bug — `fdhead: cp 17` instead of the old `cp 26` (sectors-per-head used
+  to locate the physical head from a flat sector number). 17 matches this
+  drive's real 17-sectors/track (`HDDTBL.ASM` and `FXPARK.PAS` both agree);
+  26 doesn't correspond to anything about a Seagate ST225.
+
+  **The existing `HD2.MAC` in this folder (from `egcpm001`/`sdltrsOMTI`)
+  still has the old, wrong `cp 26`** — despite its header already claiming
+  "Version für Egbert Schröer / Seagate ST225". Two other disks
+  (`egcpm06.dmk`, `egcpm34.dmk`) carry that same stale value, so this
+  wasn't a one-off typo, it round-tripped across several copies before
+  `egcpm12.dmk` shows it fixed. Anyone building from the `HD2.MAC` in this
+  folder as-is would end up with a driver whose head math doesn't match
+  its own DPB; `HD2-corrected-17sec.MAC` is the version to actually use.
+
+- **`FXPARK.PAS`** (from `egcpm11.dmk`) — a Turbo Pascal utility to park
+  the drive's heads before power-off (standard practice for MFM/RLL
+  drives of this era). Header: "Programm FXPARK.PAS, Parkt die Festplatte
+  mit OMTI xxxx Controller, Autor: Volker Dose, Original Programm-Name:
+  Park.pas, ein wenig herumgepfuscht hat Egbert Schröer" (a little
+  tinkered-with by Egbert Schröer). Builds its own 6-byte OMTI command
+  block by hand (`cfield` record: command/address/sector/track/bcount/
+  termin) — the same CDB layout documented in `sdltrsOMTI/docs/
+  OMTI_CONTROLLER.md`.
+
+- **Two more dated refinements**, from `egcpm11.dmk`'s `HDBOOTER.MAC`/
+  `LDRBIOHD.MAC` (which otherwise differ substantially from the copies
+  above — not reconciled here, just noted): `LDRBIOHD.MAC` is dated
+  "Februar 1992" for "20MB Festplatte mit OMTI-Controller"; `HDBOOTER.MAC`
+  is dated "Feb. 1993" and gives a *different* reason for the same
+  serial-number-removal this repo's own `src/booter.mac` documents (see
+  `../00-jens-guenther-holte-cpm-fork/README.md`): "Die Speicherung der
+  Seriennummer entfällt, weil sie Illegals enthält, die auf dem Z180 zum
+  Absturz führen" — the serial-number code used undocumented ("illegal")
+  Z80 opcodes that crash on the Z180 CPU. Both explanations are probably
+  true at once: it was a real Z180-compatibility bug, and removing it also
+  happened to disable the copy-protection check.
+
+- A third, still-later date turned up in a corrupted `LDRBIOHD.BAK` on
+  `egcpm34.dmk` (mostly unreadable — the file itself appears bit-rotted,
+  not just re-encoded — so not copied in here): legible fragments read
+  "...DPH für 21,4 MB Harddisk 2 Partition angepaßt 21.02.9[3] E.Schröer",
+  suggesting Egbert Schröer made his own further adjustment in Feb 1993,
+  between Volker Dose's 1992 build of this branch and the unrelated
+  mainline's Dec-1993 arrival at the same drive.
+
+Only the disks `disks.md` flagged as hard-disk/source-relevant
+(`egcpm03/04/06/09/11/12/13/14/27/34`, plus a failed attempt at `egcpm38`,
+whose Kaempf CP/M 3 format `cpmextract` can't parse) were mined so far —
+not the full 38-disk collection. See `../README.md`'s "What's not here yet"
+for what a fuller pass would still need to check.

@@ -16,7 +16,8 @@ each as a real, buildable snapshot rather than just a description.
 | 19-Oct-1987 | Peter Petersen | `HD2.MAC` v3.2 created — the first real runtime hard-disk driver | [`02-omti-mainline-1987-1993/`](02-omti-mainline-1987-1993/) (earliest state known only from the changelog header; no standalone 1987 copy survives) |
 | 08-Jul-1990 | H. Bernhardt | Revises `HD2.MAC` ("weiter dran geschnitzt") | same |
 | 1989 | Fritz Chwolka | Merges divergent `DISKIO.MAC`/`TABLES.MAC`/`DRIVER.MAC` versions; strips hard-disk wiring to make room for format-conversion pseudo-drives — see [`05-drive-p-alien-formats.md`](05-drive-p-alien-formats.md) | `src-omti/diskio1.mac`'s own header |
-| Jan 1992 | Volker Dose | Branches: adapts `HD2.MAC`/`DISKIO1.MAC` for a 20.4 MB Seagate ST225, builds a complete disk **for Egbert Schröer** with the full format toolchain included | [`03-omti-schroeer-branch-1992/`](03-omti-schroeer-branch-1992/) |
+| Jan–Feb 1992 | Volker Dose | Branches: adapts `HD2.MAC`/`DISKIO1.MAC` for a 20.4 MB Seagate ST225, builds a complete disk **for Egbert Schröer** with the full format toolchain included; a sectors-per-head bug (`cp 26` instead of `cp 17`) ships in this first cut and round-trips across several disk copies before being fixed | [`03-omti-schroeer-branch-1992/`](03-omti-schroeer-branch-1992/) |
+| 21-Feb-1993 | Egbert Schröer | Further adjusts the DPH for a "21.4 MB, 2 partition" config (only legible in a since-corrupted `.BAK` file) | same |
 | Nov 1992 | Volker Dose | Separately, adapts for a 10 MB drive ("pderr geändert für Genie IIIs") — the start of the lineage that continues into this repo | [`02-omti-mainline-1987-1993/`](02-omti-mainline-1987-1993/) |
 | 30-Jul-1993 | Volker Dose | Mainline: adapts to a 20 MB Tandon TM262 | same |
 | 21-Dec-1993 | Egbert Schröer | Mainline: adapts to a Seagate ST225 (MFM/RLL) — **this exact state is what `src-omti/` in this repo preserves today** | same; compare with `src-omti/hd2.mac` |
@@ -48,7 +49,13 @@ still carries the actual formatting toolchain (`HDDTBL.ASM`, `HDNDF.Z80`)
 alongside the driver. Both are preserved here rather than picking one as
 "more canonical," since they demonstrate different things: the mainline
 shows the incremental adaptation this repo continues, the branch shows the
-complete original build-and-format workflow.
+complete original build-and-format workflow. Mining the disk collection
+directly (rather than relying only on prior extractions) even caught the
+two branches mid-splice: `egcpm12.dmk` has a genuine before/after pair,
+`HD2.BAK` (word-for-word the mainline's Nov-1992 file) becoming `HD2.MAC`
+(rewritten into this branch's header and geometry) in one editing session
+— see `03-omti-schroeer-branch-1992/README.md` for the bug that edit
+introduced and how it was later fixed.
 
 ## What's preserved as-is
 
@@ -63,14 +70,22 @@ readability fixes belong. The one exception: cross-checking `00-` against
 in the living copy, which was fixed there directly — see
 `00-jens-guenther-holte-cpm-fork/README.md`.
 
-## What's not here yet
+## What's been mined so far, and what hasn't
 
-The wider disk collection this was pulled from
-(`GenieIIIs/DMK/`, `TRS80 Disks/diskimages/`, hundreds of `.dmk` images
-including many `esnd-*.dmk` NewDOS-80 disks and `egcpm*.dmk`/`g3s_f*.dmk`
-CP/M disks) hasn't been exhaustively mined — only the snapshots already
-hand-extracted into `sdltrsOMTI/src ST 225/` and `GenieIIIs/Holte CPM src/`
-were used here. In particular:
+Three sources fed this folder: prior hand-extractions already sitting in
+`sdltrsOMTI/src ST 225/` and `GenieIIIs/Holte CPM src/`, Jens Guenther's
+GitLab fork, and — going one level further — `cpmextract` run directly
+against `GenieIIIs/DMK/Egbert/*.dmk`, guided by that folder's own
+`disks.md` catalog. Of the 38 disks `disks.md` catalogues, the ones it
+flags as hard-disk/source-relevant have been checked:
+`egcpm03/04/06/09/11/12/13/14/27/34.dmk`, plus a failed attempt at
+`egcpm38.dmk` (see below). The rest of that 38 — and the much larger pile
+of disks *not* in `disks.md` at all (`GenieIIIs/DMK/`'s ~50 other `.dmk`
+files including the `Fritz/` and `Egbert/newdos/` subfolders, `TRS80
+Disks/diskimages/`'s `esnd-*.dmk` NewDOS-80 disks, `cpmextract/DMK/`,
+`sdltrsOMTI/dmk-working/`) — have not been mined at all yet.
+
+Still missing, even after this pass:
 
 - No standalone 1987 (Petersen) or 1990 (Bernhardt) `HD2.MAC` has been
   located yet — only known via the cumulative changelog header every later
@@ -78,13 +93,21 @@ were used here. In particular:
 - The pre-Chwolka BIOS that could apparently mount `IBMPC`/`KDS`/`RAIR`/
   `ALPHAP3` floppy formats through drive P: (see
   [`05-drive-p-alien-formats.md`](05-drive-p-alien-formats.md)) hasn't been
-  found on any disk checked so far.
-- The Seagate-ST251/4-partition experiment in `04-` is undated and unplaced
-  in the timeline above — it doesn't match either surviving branch's
+  found — though `egcpm38.dmk`'s Kaempf CP/M 3 format and `egcpm09.dmk`'s
+  `PC2CPM.PAS` turned up two related, concrete, but non-matching data
+  points; see `05-drive-p-alien-formats.md`.
+- The Seagate-ST251/4-partition experiment in `04-` is still undated and
+  unplaced in the timeline above — it doesn't match any surviving branch's
   `DISKIO1.MAC`, so its `HD2.MAC` counterpart (if it survives at all) is
   still unlocated.
+- `egcpm38.dmk` itself: `cpmextract` only understands the Holte "Double
+  Density" floppy DPB, so it can't parse this disk's Kaempf CP/M 3
+  directory at all (errors out immediately). Reading it would need either
+  a Kaempf-CP/M-aware DPB taught to the tool, or reading it back through
+  Holte CP/M's own `format.com` + drive P:, per `disks.md`'s own
+  instructions.
 
 `cpmextract` (currently tuned to the "Double Density Holte" floppy DPB) is
-the tool that would extend this: teaching it the hard-disk DPBs and a
-cataloguing pass over the full `.dmk` collection is the natural next step
-for finding any of the above.
+the tool that would extend this further: teaching it the hard-disk DPBs
+and the Kaempf format, and a cataloguing pass over the full remaining
+`.dmk` collection, are the natural next steps.

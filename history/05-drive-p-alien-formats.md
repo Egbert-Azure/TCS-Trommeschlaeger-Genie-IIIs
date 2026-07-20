@@ -56,3 +56,33 @@ place instead of deleted, so today it's the only trace that the wider set
 ever existed. If a disk carrying the pre-Chwolka, multi-format version
 turns up in the wider collection (`GenieIIIs/DMK/`, `TRS80 Disks/`), it
 would be worth extracting into a `06-` folder here.
+
+## Two confirmed, concrete data points (neither is a full match)
+
+Mining `GenieIIIs/DMK/Egbert/` directly (per its own `disks.md` catalog)
+turned up two real things related to the "alien format" idea, though
+neither hands over the missing `IBMPC`/`KDS`/`RAIR`/`ALPHAP3` drivers
+themselves:
+
+- **`egcpm38.dmk`**: `disks.md` describes it as "Assembler (in USER 1);
+  format is Kaempf CP/M 3. To read with Holte CP/M use `format.com` tool
+  and virtual drive P:" — a genuine, named alien CP/M format (a variant
+  from "Kaempf") that this community really did use drive P: to read.
+  `cpmextract` can't parse it (it assumes the Holte "Double Density" DPB,
+  which this disk doesn't use), so its directory/DPB weren't recovered
+  here — but it's concrete confirmation that drive P:'s aliasing trick was
+  operationally used for at least one specific, named format beyond
+  whatever `XLTF`/`DPBF` are currently set to.
+
+- **`PC2CPM.PAS`** (found on `egcpm09.dmk`, part of the wider mining pass
+  — see `../03-omti-schroeer-branch-1992/README.md`): "Konvertiert
+  Textfiles mit IBM-8bit Zeichensatz in 7bit ASCII wie bei CP/M. Aus Club
+  80 Info 34" (converts text files with the IBM 8-bit character set into
+  7-bit ASCII as used by CP/M; from Club 80 Info newsletter issue 34). This
+  is real, dated evidence that the Club 80 community did IBM-PC
+  interoperability work — but it's a text-encoding converter (a `umcode`
+  translation table applied byte-by-byte to a file already read some other
+  way), not a disk-format driver. It doesn't explain how an `IBMPC` floppy
+  would have been *read* by drive P:, only what happened to the text
+  afterward. Worth keeping in mind if the actual `IBMPC` drive code ever
+  turns up: this utility may have been what it fed into.
