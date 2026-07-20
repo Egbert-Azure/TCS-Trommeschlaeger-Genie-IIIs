@@ -1,76 +1,85 @@
-# TCS Trommeschläger Genie IIIs: A Legacy Computer System
+# TCS Trommeschläger Genie IIIs: Holte CP/M 3.0
 
-The TCS Trommeschläger Genie IIIs repository contains an emulator and associated files for running the legacy Genie IIIs computer system on Windows. This project enables users to simulate and experience the functionality of the original Genie IIIs system, which operated on the CP/M platform.
+This repository preserves and documents Thomas Holte's CP/M 3.0 (and CP/M
+2.2) system for the TCS Trommeschläger Genie IIIs / EACA Genie III — a
+Z80-based, TRS-80-compatible German computer from the mid-1980s. That's
+the whole scope: this is the Genie IIIs running Holte CP/M, nothing more.
+It's a source-code archive, not an emulator — see "Running it" below for
+that.
 
-Key Features:
+The system originally ran floppy-only; a community of contributors (Peter
+Petersen, H. Bernhardt, Fritz Chwolka, Volker Dose, Egbert Schröer) added
+hard-disk support over 1987–1993 through Club 80, a computer club (long
+since gone) that this work circulated through. `history/` documents that
+whole evolution — and, going further back, an independent restoration of
+Holte's original release by Jens Guenther — as real, buildable snapshots
+rather than just descriptions.
 
-- Emulator for running the TCS Trommeschläger Genie IIIs system on Windows, MacOS or Linux
-- Source code for essential system components, utilities, and libraries
-- Supports the use of Hitech C compiler and graphics functions
-- Allows users to interact with a bootable CP/M system
+## Running it
 
-Explore the source code, utilities, and libraries provided in this repository to learn more about the inner workings of the TCS Trommeschläger Genie IIIs system. Get hands-on experience with this legacy computer system and discover its capabilities.
+This repo is source code and disk images, not a runnable program by
+itself. To actually boot the Genie IIIs, you need an emulator:
 
-Note: This project is intended for educational and historical purposes and may require some technical knowledge to set up and operate.
+- **[sdltrs](https://gitlab.com/jengun/sdltrs)**, by Jens Guenther — the
+  SDL2-based TRS-80 Model I/III/4/4P emulator this all runs on, and the
+  reason any of this works cross-platform at all: it builds and runs on
+  Windows, Linux, and macOS from one codebase. It emulates the Genie IIIs'
+  Western Digital WD1000/1010 hard-disk controller.
+- **[sdltrsOMTI](https://github.com/Egbert-Azure/sdltrsOMTI)** — a fork of
+  sdltrs adding emulation of the *other* hard-disk controller this system
+  supports: the OMTI 5527 SASI/MFM controller (see `src-omti/` and
+  `history/`). This matters specifically if you want to run any of the
+  Seagate ST225/OMTI-based configurations documented in this repo — plain
+  sdltrs can't drive those, only the WD1000/1010 path.
+- **[SDLTRS-Wrapper](https://github.com/Egbert-Azure/SDLTRS-Wrapper)**
+  ("TRS-80 Launcher") — a native macOS front-end wrapping sdltrs/sdltrsOMTI
+  in a proper Cocoa UI (machine presets, floppy and hard-disk slots, ROM/
+  config controls), for when the emulator's own menus aren't what you want.
+  It's a launcher, not a separate emulator — Windows and Linux users can
+  just run sdltrs/sdltrsOMTI directly.
 
-Contributions and feedback are welcome. Feel free to fork this repository, make enhancements, and submit pull requests to contribute to the development of the TCS Trommeschläger Genie IIIs Holte CP/M.
+## What's in this repo
 
-Start your journey into the world of the TCS Trommeschläger Genie IIIs legacy system today!
+- **`src/`** — Thomas Holte's original CP/M 3.0 BIOS, BDOS-linkage, and
+  utility sources (floppy + RAM disk only). Start with
+  [`src/List of sys components.md`](src/List%20of%20sys%20components.md)
+  for what each module does and how `BOOTGEN.SUB`/`CPM3.SUB` build a
+  system.
+- **`src-omti/`** — the OMTI 5527/Seagate ST225 hard-disk BIOS additions,
+  kept separate so the original Holte sources in `src/` stay untouched. See
+  [`src-omti/List of sys components.md`](src-omti/List%20of%20sys%20components.md).
+  `rom/g3s_hd-omti_bootrom_2764.bin` (written by Arnolf Sopp) is the boot
+  EPROM that lets the system boot directly from the hard disk with no
+  floppy inserted.
+- **`src-hitech-lib/`** — Hi-Tech C library headers and the `HOLTE.LIB`
+  graphics-library linker map, for writing your own C programs against
+  this system's HRG (high-resolution graphics) hardware. See its own
+  [`README.md`](src-hitech-lib/README.md); to actually get a working
+  Hi-Tech C toolchain, see
+  <https://github.com/Egbert-Azure/Install-HITECH-C-COMPILER>.
+- **`history/`** — every hard-disk BIOS lineage and independent restoration
+  found across the wider disk collection, as real, buildable snapshots:
+  Jens Guenther's independent restoration of Holte's original release,
+  Holte's format-only Winchester support, Peter Petersen's 1987 driver and
+  its divergent 1992/1993 branches, an undated Seagate ST251 4-partition
+  experiment, and the lost "alien format" floppy drives. Start at
+  [`history/README.md`](history/README.md).
+- **`rom/`** — boot EPROM images.
 
-## Introduction
+There used to be a note here about `UTILS/`/`CPMSYS/`/`LIBPLOT/`/`LIBCZZZ/`/
+`CLIBYYY/` subfolders under `src/`. Those never existed as folders in this
+repo — `src/` is flat. `LIBCZZZ`, `CLIBYYY`, and `CLIBXXX` were Holte's own
+names for three small shared C libraries (now in `src-hitech-lib/`), not
+directories; `LIBPLOT` was likely an early name for the `HOLTE.LIB`
+graphics library documented there.
 
-The TCS Trommeschläger Genie IIIs is a legacy computer system that originally ran on CP/M, Gdos 2.4 or NewDos. This project provides an emulator to run the Genie IIIs system on Windows using the CP/M-based emulator.
+## License
 
-## Features
+This repo's own material (documentation, tooling, organization) is
+[MIT-licensed](LICENSE). The vendored Holte CP/M sources themselves carry
+their own original terms — see `history/00-jens-guenther-holte-cpm-fork/README.md`
+for the license Thomas Holte released them under.
 
-- Running the TCS Trommeschläger Genie IIIs Legacy Computer System on Windows with sdltrs
-- Source code for various components of the system:
-under project file
-  - `SRC/`: System files [click here](https://github.com/Egbert-Azure/TCS-Trommeschlaeger-Genie-IIIs/blob/main/src/List%20of%20sys%20components.md)
- 
- Subfolders under src
-  - `UTILS/`: Utility files for the system
-  - `CPMSYS/`: CP/M system files
-  - `LIBPLOT/`: C-LIB with graphic functions for use with Hitech C compiler
-  - `LIBCZZZ/`: Additional C library files (LIBCZZZ)
-  - `CLIBYYY/`: Additional C library files (CLIBYYY)
-- Documentation:
-  - `docs/`: User manual in PDF format
-
-## OMTI 5527 hard-disk support
-
-Seagate ST225 / OMTI 5527 SASI-MFM hard-disk BIOS additions (Peter Petersen, H. Bernhardt, Volker Dose, Egbert Schröer) live in their own `src-omti/` folder, kept separate from the original Holte sources in `src/` — see `src-omti/List of sys components.md` for details on each module. `rom/g3s_hd-omti_bootrom_2764.bin` (written by Arnolf Sopp) is the boot EPROM that lets the system boot directly from the hard disk with no floppy inserted.
-
-An OMTI 5527 controller emulation for these sources exists in [sdltrsOMTI](https://github.com/Egbert-Azure/sdltrsOMTI), a fork of sdltrs/xtrs — including a full protocol writeup and a working, tested zero-floppy direct-hard-disk-boot setup.
-
-## Hard-disk history
-
-`history/` consolidates every hard-disk BIOS lineage found across the wider
-disk collection into real, buildable snapshots — from Holte's 1985
-format-only Winchester support, through Peter Petersen's original 1987
-driver and its two divergent 1992/1993 branches (one of which is `src-omti/`
-itself), to an undated Seagate ST251 4-partition experiment. See
-[`history/README.md`](history/README.md) for the full timeline, and
-[`history/05-drive-p-alien-formats.md`](history/05-drive-p-alien-formats.md)
-for the virtual `P:` drive and the alien floppy formats it once read.
-
-## Getting Started
-
-1. Clone the repository:
-2. Build and run the emulator using the provided instructions in the documentation.
-
-3. Explore the various components of the system by examining the source code in the respective directories.
-
-Contributing
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-git checkout -b my-feature
-3. Make your changes and commit them:
-git commit -m "Add my feature"
-4. Push your changes to your forked repository:
-git push origin my-feature
-5. Open a pull request to merge your changes into the main repository.
-
-etc etc etc
+Contributions and corrections are welcome — especially if you can identify
+any of the still-open questions in `history/README.md`'s "What's not here
+yet" section, or have more disks from this era.
