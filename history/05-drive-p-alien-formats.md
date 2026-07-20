@@ -1,10 +1,8 @@
 # Drive P: the alien-format drive
 
-**Correction:** this page originally called these "the lost alien-format
-drives." That's the wrong framing, per Egbert Schröer directly — nothing
-about drive P: is lost or broken. The mechanism works, plainly, in every
+The mechanism works, plainly, in every
 recovered snapshot. What varies from one source snapshot to the next is
-simply *which* format it's configured to read: different versions carry
+simply *which* format it's configured to read in diskio.mac: different versions carry
 different `XLTF`/`DPBF` wiring, some read one alien format, some read none
 beyond the default. The `IBMPC`/`KDS`/`RAIR`/`ALPHAP3` line further down is
 one specific configuration this collection hasn't recovered a matching
