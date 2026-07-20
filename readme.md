@@ -4,7 +4,7 @@ The TCS Trommeschläger Genie IIIs repository contains an emulator and associate
 
 Key Features:
 
-- Emulator for running the TCS Trommeschläger Genie IIIs system on Windows
+- Emulator for running the TCS Trommeschläger Genie IIIs system on Windows, MacOS or Linux
 - Source code for essential system components, utilities, and libraries
 - Supports the use of Hitech C compiler and graphics functions
 - Allows users to interact with a bootable CP/M system
