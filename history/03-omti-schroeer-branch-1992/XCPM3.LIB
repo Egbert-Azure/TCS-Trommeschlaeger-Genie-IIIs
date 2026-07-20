@@ -288,5 +288,3 @@ skew1 macro ?secs,?skf,?fsc
 	    endif
 	endm
     endm
-
-

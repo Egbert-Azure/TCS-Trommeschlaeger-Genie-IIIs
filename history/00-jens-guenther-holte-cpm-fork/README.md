@@ -5,6 +5,14 @@ as a full snapshot, `.git` history excluded; single commit at time of
 pulling: "Change RAM disk size to 726 KB"). License: CC BY-NC-SA 4.0,
 matching this repo's own non-commercial/historical purpose.
 
+One cleanup was applied on top of the vendored snapshot: every text source
+file there originally ended in a CP/M-style trailing Ctrl-Z (0x1A) EOF
+marker — pure sector-padding noise with no informational content, but
+visibly "a weird character at the end of the file" in an editor. That's
+stripped throughout `upstream/`. Everything else — CRLF line endings, DIN
+66003 encoding, actual content — is untouched, same as the rest of
+`history/`.
+
 Jens Guenther is the author of the [sdltrs](https://gitlab.com/jengun/sdltrs)
 TRS-80 emulator that `sdltrsOMTI` (see `../../` root readme) is itself
 forked from. Independently of that, he worked through Thomas Holte's

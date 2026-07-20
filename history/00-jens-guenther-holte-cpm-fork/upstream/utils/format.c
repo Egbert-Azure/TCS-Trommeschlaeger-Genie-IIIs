@@ -578,4 +578,3 @@ static fatal_error ()
   printf (err11);
   _exit	 (2);
 }
-

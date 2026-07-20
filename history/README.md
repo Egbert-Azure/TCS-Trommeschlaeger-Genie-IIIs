@@ -79,10 +79,16 @@ its source (see each folder's own `README.md` for exactly where). Unlike
 DIN 66003 "German ASCII" placeholder characters (`{`/`|`/`}`/`~` for
 `ä`/`ö`/`ü`/`ß`) are left exactly as found. The point of this folder is
 historical fidelity; `src/` and `src-omti/` are where active maintenance and
-readability fixes belong. The one exception: cross-checking `00-` against
-`src/driver.mac` found real encoding corruption (not a historical variant)
-in the living copy, which was fixed there directly — see
-`00-jens-guenther-holte-cpm-fork/README.md`.
+readability fixes belong.
+
+Two narrow exceptions. First: cross-checking `00-` against `src/driver.mac`
+found real encoding corruption (not a historical variant) in the living
+copy, which was fixed there directly — see
+`00-jens-guenther-holte-cpm-fork/README.md`. Second: every text-source file
+under `00-`, `02-`, and `03-` originally ended in a trailing CP/M-style
+Ctrl-Z (0x1A) EOF marker — pure sector-padding noise with no content, just
+"a weird character at the end of the file" in an editor. That's stripped
+throughout; everything else in those files, CRLF and all, is untouched.
 
 ## What's been mined so far, and what hasn't
 

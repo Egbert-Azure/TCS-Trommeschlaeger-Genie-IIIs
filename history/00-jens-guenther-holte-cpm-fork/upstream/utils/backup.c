@@ -793,4 +793,3 @@ static xabort (mode, drive)
   printf ("\n");
   _exit	 (mode);
 }
-

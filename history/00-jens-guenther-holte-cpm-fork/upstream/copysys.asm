@@ -846,4 +846,3 @@ CLSERR:	db	'ERROR: Close operation failed.$'
 	ds	STACKSIZE * 3
 STACK:
 	end
-

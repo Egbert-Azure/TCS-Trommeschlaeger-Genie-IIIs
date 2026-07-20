@@ -5719,4 +5719,3 @@ REQWAIT:IN   A,(RPORT1)		;get cntlr status bits
 	ENDC
 
 	END
-

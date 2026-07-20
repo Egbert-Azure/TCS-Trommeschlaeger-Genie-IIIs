@@ -1081,4 +1081,3 @@ static xabort (mode, drive, user)
   system (    24,     0);
   _exit	 (mode);
 }
-

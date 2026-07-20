@@ -12,4 +12,3 @@ M80
 LINK BNKBIOS3[B,NR]=BNKBIOS,SCB,BOOT,CHARIO,MOVE,DRVTBL1,DISKIO1,HD2
 
 Gencpm auto
-

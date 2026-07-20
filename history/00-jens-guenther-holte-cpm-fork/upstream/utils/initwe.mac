@@ -96,4 +96,3 @@ TYPE3:	DEFM 'standard floppy'
 	DEFB 0
 
 	END
-

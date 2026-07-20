@@ -551,4 +551,3 @@ static char keycode (code)
 
   return code;
 }
-

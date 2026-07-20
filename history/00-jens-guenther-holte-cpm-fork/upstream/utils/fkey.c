@@ -248,4 +248,3 @@ static xabort (mode, drive)
   system (    24,     0);
   _exit	 (mode);
 }
-
