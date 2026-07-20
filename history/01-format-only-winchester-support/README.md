@@ -40,3 +40,14 @@ collection. The earliest *recovered* one is Peter Petersen's `HD2.MAC`
 (19-Oct-1987) — see `../02-omti-mainline-1987-1993/` — but given the
 Tandon shipped from day one, there was almost certainly something driving
 it before 1987 that just hasn't turned up in this collection yet.
+
+**The original controller was a Xebec SASI controller**, confirmed
+directly by Egbert Schröer (who owned one) — not the OMTI 5527 that
+`src-omti/` and most of this history document. `src/initw.c` already has
+Holte's original code for it, gated behind `#ifdef SASI`: "port addresses
+of Xebec SASI Controller," with `TEST`/`REST`/`FORMAT`/`INIDRV` commands —
+right next to an `#else` branch for a Western Digital WD1000/1010-style
+controller. Whatever drove the stock Tandon drive before 1987 almost
+certainly used this Xebec path, not the WD one. See
+`../06-company-history.md` for how the Tandon-equipped GENIE IIIs fits into
+TCS's own short, commercially unsuccessful history.

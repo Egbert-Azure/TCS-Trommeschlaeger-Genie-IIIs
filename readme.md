@@ -1,21 +1,31 @@
 # TCS Trommeschläger Genie IIIs: Holte CP/M 3.0
 
 This repository preserves and documents Thomas Holte's CP/M 3.0 (and CP/M
-2.2) system for the TCS Trommeschläger Genie IIIs / EACA Genie III — a
-Z80-based, TRS-80-compatible German computer, built by TCS from around
-1985. It shipped with a Tandon 10 MB hard disk built in from the start
-(a large, heavy full-height drive) — one of the last big CP/M machines,
-technically ahead of its time but arriving too late for a market the IBM
-PC had already taken over. That history is the whole scope of this repo:
-this is the Genie IIIs running Holte CP/M, nothing more. It's a
+2.2) system for the **TCS Trommeschläger Genie IIIs** — not to be confused
+with the plain **Genie III**, an earlier, unrelated machine manufactured by
+EACA (Hong Kong) that TCS merely distributed in Germany. Genie III (and
+EACA's COLOUR-GENIE) shipped with construction defects costly enough to fix
+that TCS designed its own improved successor in response, starting June
+1983: the **Genie IIIs** (note the trailing "s"), built in Germany with
+Siemens producing the electronics and TCS doing final assembly. It's this
+TCS-built Genie IIIs, Z80-based and TRS-80-compatible, that shipped with a
+Tandon 10 MB hard disk built in from the start (via a Xebec SASI controller
+— see `history/01-format-only-winchester-support/`). It sold only about 200
+units, ever, and TCS itself went bankrupt in August 1985 — under two years
+after launch — as the market moved to the IBM PC. One of the last big CP/M
+machines, technically ahead of its time and too late anyway; see
+[`history/06-company-history.md`](history/06-company-history.md) for the
+full, sourced company history. That history is the whole scope of this
+repo: this is the Genie IIIs running Holte CP/M, nothing more. It's a
 source-code archive, not an emulator — see "Running it" below for that.
 
 The hardware always had a hard disk; Holte's *software* support for it is
 a separate, longer story. A community of contributors (Peter Petersen, H.
 Bernhardt, Fritz Chwolka, Volker Dose, Egbert Schröer) built and rebuilt
 the CP/M hard-disk driver across 1987–1993 through Club 80, a computer club
-(long since gone) that this work circulated through. `history/` documents
-that whole software evolution — and, going further back, an independent
+(long since gone) that this work circulated through — almost certainly
+long after TCS itself had stopped existing. `history/` documents that
+whole software evolution — and, going further back, an independent
 restoration of Holte's original release by Jens Guenther — as real,
 buildable snapshots rather than just descriptions.
 

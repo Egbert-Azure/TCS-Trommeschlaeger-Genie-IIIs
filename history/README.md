@@ -1,10 +1,14 @@
 # A history of hard-disk support on the Genie IIIs
 
 The Genie IIIs was never a floppy-only machine — TCS shipped it with a
-Tandon 10 MB hard disk built in from the start (see
+Tandon 10 MB hard disk (via a Xebec SASI controller) built in from the
+start (see
 [`01-format-only-winchester-support/`](01-format-only-winchester-support/)
 for the correction to an earlier version of this history that got that
-wrong). What this folder actually tracks is the *software* history: how
+wrong, and [`06-company-history.md`](06-company-history.md) for TCS's own
+history — a company that sold roughly 200 Genie IIIs units before going
+bankrupt in 1985). What this folder actually tracks is the *software*
+history: how
 Holte's CP/M BIOS gained a working hard-disk driver, and how that driver
 was adapted across drives and years afterward. This repo's `src/` is
 Thomas Holte's base CP/M 3.0 system as it survives today (no runtime
