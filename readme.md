@@ -79,7 +79,8 @@ itself. To actually boot the Genie IIIs, you need an emulator:
   Jens Guenther's independent restoration of Holte's original release,
   Holte's format-only Winchester support, Peter Petersen's 1987 driver and
   its divergent 1992/1993 branches, an undated Seagate ST251 4-partition
-  experiment, and the lost "alien format" floppy drives. Start at
+  experiment, and drive P:'s working alien-floppy-format mechanism (its
+  exact configuration varies by snapshot). Start at
   [`history/README.md`](history/README.md).
 - **`rom/`** — boot EPROM images.
 

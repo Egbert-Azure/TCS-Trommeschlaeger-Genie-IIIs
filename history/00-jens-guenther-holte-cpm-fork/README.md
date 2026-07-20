@@ -52,13 +52,22 @@ now reads correctly. This is the one place this cross-check changed a
 of NEC D5124 Winchester drive" inside the file for the D5126 (fixed to
 D5126 as part of this pass). Jens's copy already had it right.
 
-**`initw.c`: a compiler migration, dated.** Jens's copy (`upstream/utils/initw.c`,
-26-Nov-1985) uses BDS-C's own `movmem()`/`setmem()` runtime functions.
-`src/initw.c` (15-Sep-1986 — ten months later) uses standard `memcpy()`/
-`memset()` instead. Thomas Holte evidently rewrote this file for a different
-C compiler sometime in 1986 — consistent with the top-level readme's mention
-of Hi-Tech C support. `tm252.h` in `../01-format-only-winchester-support/`
-was cross-confirmed byte-for-byte against `upstream/utils/tm252.h`.
+**`initw.c`: this is Egbert's port, not Holte's.** An earlier version of
+this page claimed Holte himself migrated his utility toolkit from Mi-C to
+Hi-Tech C in 1986 — wrong, per Egbert Schröer directly. **Holte only ever
+used Mi-C**, a commercial CP/M compiler still costing real money into the
+early '90s. Jens's copy (`upstream/utils/initw.c`, dated 26-Nov-1985) uses
+Mi-C's own `movmem()`/`setmem()` runtime functions and no `<bios.h>` —
+that's Holte's own file, under Mi-C. `src/initw.c` (dated 15-Sep-1986,
+predating Fritz Chwolka getting Holte to release the source at all in
+1990) uses standard `memcpy()`/`memset()` instead — but that's Egbert's own
+later adaptation of the released source for Hi-Tech C (free, unlike Mi-C),
+with the original 1986 date carried forward unchanged rather than updated
+to reflect the port. See `src-hitech-lib/README.md` for the fuller
+cross-check across Jens's other `upstream/utils/*.c` files, and for why
+that 1986 date doesn't mean what it looks like it means. `tm252.h` in
+`../01-format-only-winchester-support/` was cross-confirmed byte-for-byte
+against `upstream/utils/tm252.h`.
 
 **`boot.mac`: an undocumented multi-drive configuration.** `src/boot.mac`'s
 boot banner just reads `'GENIE IIIs SYSTEM'`. Jens's reads

@@ -1,4 +1,15 @@
-# Drive P: and the lost alien-format drives
+# Drive P: the alien-format drive
+
+**Correction:** this page originally called these "the lost alien-format
+drives." That's the wrong framing, per Egbert Schröer directly — nothing
+about drive P: is lost or broken. The mechanism works, plainly, in every
+recovered snapshot. What varies from one source snapshot to the next is
+simply *which* format it's configured to read: different versions carry
+different `XLTF`/`DPBF` wiring, some read one alien format, some read none
+beyond the default. The `IBMPC`/`KDS`/`RAIR`/`ALPHAP3` line further down is
+one specific configuration this collection hasn't recovered a matching
+source for yet — an open cataloguing gap, not evidence that the feature
+itself disappeared.
 
 `src/diskio.mac` and `src-omti/diskio1.mac` both wire up a virtual drive,
 `P:`, via `P$READ`/`P$WRITE`/`P$TASK` (see `src/diskio.mac:476` /
@@ -17,9 +28,11 @@ This is why drive P: can use a completely different disk parameter block
 (`DPBF`, "VIRTUELLES DRIVE -P-") and sector-translation table (`XLTF`) from
 drive B:'s own, while reusing all of B:'s physical driver code — the classic
 CP/M pattern for reading a foreign floppy format on hardware built for one
-native format. Today, in both `src/` and `src-omti/`, `XLTF` is a single
-fixed straight-through table (no reordering) — P: currently reads one
-specific format, not several.
+native format, and it works correctly wherever it's configured. In both
+`src/` and `src-omti/`, `XLTF` happens to be a single fixed straight-through
+table (no reordering) — P: in *these particular* snapshots is set up for
+one specific format, not several, but that's a property of these snapshots'
+configuration, not a limitation of the mechanism itself.
 
 ## The fossil comment
 
@@ -49,13 +62,14 @@ Chwolka (1989): he merged several divergent versions of `DISKIO.MAC`,
 `TABLES.MAC`, and `DRIVER.MAC` and *removed* hard-disk wiring "um
 Pseudo-Laufwerke zur Formatkonvertirung einzubinden" (to make room for
 pseudo-drives for format conversion). That rework is almost certainly what
-collapsed a BIOS that could mount several alien floppy formats at once down
-to the single `DRIVEP` slot that survives — the `GLOBAL` line was edited to
-match the code that resulted, but the old comment line above it was left in
-place instead of deleted, so today it's the only trace that the wider set
-ever existed. If a disk carrying the pre-Chwolka, multi-format version
-turns up in the wider collection (`GenieIIIs/DMK/`, `TRS80 Disks/`), it
-would be worth extracting into a `06-` folder here.
+reconfigured a BIOS that could mount several alien floppy formats at once
+down to the single `DRIVEP` slot in this particular lineage — the `GLOBAL`
+line was edited to match the code that resulted, but the old comment line
+above it was left in place instead of deleted, so today it's a pointer
+toward a differently-configured version rather than proof that one no
+longer exists anywhere. If a disk carrying that earlier, multi-format
+configuration turns up in the wider collection (`GenieIIIs/DMK/`, `TRS80
+Disks/`), it would be worth extracting into a `06-` folder here.
 
 ## Two confirmed, concrete data points (neither is a full match)
 

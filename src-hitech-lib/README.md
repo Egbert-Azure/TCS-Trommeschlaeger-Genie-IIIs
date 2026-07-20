@@ -1,11 +1,33 @@
 # Hi-Tech C library headers
 
-Thomas Holte's C utilities (`src/initw.c` and others) were originally
-written against BDS-C — Jens Guenther's independent restoration
-(`history/00-jens-guenther-holte-cpm-fork/upstream/utils/initw.c`, dated
-26-Nov-1985) still uses BDS-C's own `movmem()`/`setmem()` runtime calls.
-This repo's own `src/initw.c` (dated 15-Sep-1986) already uses standard
-`memcpy()`/`memset()` instead — evidence of a later migration to Hi-Tech C.
+**Correction:** an earlier version of this page claimed Thomas Holte himself
+migrated his utility toolkit from Mi-C to Hi-Tech C in 1986. That's wrong,
+per Egbert Schröer directly. **Holte only ever used Mi-C** — a commercial
+CP/M C compiler that was still being sold for serious money into the early
+'90s. Once Fritz Chwolka got Holte to release the source in 1990 (see
+`history/00-jens-guenther-holte-cpm-fork/README.md`), Egbert built it
+himself with **Hi-Tech C** instead, specifically because Mi-C wasn't free
+and Hi-Tech C was (and, in his view, simply better). The Hi-Tech C work in
+this collection — including `src/initw.c`'s `memcpy()`/`memset()` calls,
+where `history/00-.../upstream/utils/initw.c` (Jens's copy) still has
+Mi-C's own `movmem()`/`setmem()` — is Egbert's own adaptation of Holte's
+released source, not something Holte did.
+
+That leaves an open dating question rather than a settled one: `src/initw.c`'s
+header still reads "15-Sep-1986," predating the 1990 release entirely. That
+date almost certainly reflects Holte's own last edit to the file (still
+under Mi-C at the time), carried forward unchanged when Egbert later
+adapted the code for Hi-Tech C — this codebase's simple, single-date header
+style (unlike `hd2.mac`'s full running changelog) doesn't get updated by
+every subsequent editor. `errno.h` in this folder still names Mi-C
+explicitly in its own header comment ("common definitions for **Mi-C** file
+system error numbers"), which is what confirmed the compiler's actual name
+here in the first place.
+
+`HOLTE.LIB` (below) is a separate, later Hi-Tech C artifact from the start:
+Volker Dose's and Egbert Schröer's own graphics library, from July 1993 —
+not a port of anything Holte wrote.
+
 To build against Hi-Tech C on a modern machine, see
 <https://github.com/Egbert-Azure/Install-HITECH-C-COMPILER>.
 
