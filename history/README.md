@@ -1,8 +1,16 @@
 # A history of hard-disk support on the Genie IIIs
 
-This repo's `src/` is Thomas Holte's base CP/M 3.0 system (floppy + RAM disk
-only) and `src-omti/` is one specific, later hard-disk lineage grafted onto
-it. Between those two lie several other branches and experiments, scattered
+The Genie IIIs was never a floppy-only machine — TCS shipped it with a
+Tandon 10 MB hard disk built in from the start (see
+[`01-format-only-winchester-support/`](01-format-only-winchester-support/)
+for the correction to an earlier version of this history that got that
+wrong). What this folder actually tracks is the *software* history: how
+Holte's CP/M BIOS gained a working hard-disk driver, and how that driver
+was adapted across drives and years afterward. This repo's `src/` is
+Thomas Holte's base CP/M 3.0 system as it survives today (no runtime
+hard-disk driver in it, whatever originally drove the stock Tandon), and
+`src-omti/` is one specific, later hard-disk lineage grafted onto it.
+Between those two lie several other branches and experiments, scattered
 across disk images (`.dmk`) and source trees in sibling repositories on
 disk. This folder pulls the hard-disk-relevant ones together into one place,
 each as a real, buildable snapshot rather than just a description.

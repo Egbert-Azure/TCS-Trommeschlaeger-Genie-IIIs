@@ -2,18 +2,22 @@
 
 This repository preserves and documents Thomas Holte's CP/M 3.0 (and CP/M
 2.2) system for the TCS Trommeschläger Genie IIIs / EACA Genie III — a
-Z80-based, TRS-80-compatible German computer from the mid-1980s. That's
-the whole scope: this is the Genie IIIs running Holte CP/M, nothing more.
-It's a source-code archive, not an emulator — see "Running it" below for
-that.
+Z80-based, TRS-80-compatible German computer, built by TCS from around
+1985. It shipped with a Tandon 10 MB hard disk built in from the start
+(a large, heavy full-height drive) — one of the last big CP/M machines,
+technically ahead of its time but arriving too late for a market the IBM
+PC had already taken over. That history is the whole scope of this repo:
+this is the Genie IIIs running Holte CP/M, nothing more. It's a
+source-code archive, not an emulator — see "Running it" below for that.
 
-The system originally ran floppy-only; a community of contributors (Peter
-Petersen, H. Bernhardt, Fritz Chwolka, Volker Dose, Egbert Schröer) added
-hard-disk support over 1987–1993 through Club 80, a computer club (long
-since gone) that this work circulated through. `history/` documents that
-whole evolution — and, going further back, an independent restoration of
-Holte's original release by Jens Guenther — as real, buildable snapshots
-rather than just descriptions.
+The hardware always had a hard disk; Holte's *software* support for it is
+a separate, longer story. A community of contributors (Peter Petersen, H.
+Bernhardt, Fritz Chwolka, Volker Dose, Egbert Schröer) built and rebuilt
+the CP/M hard-disk driver across 1987–1993 through Club 80, a computer club
+(long since gone) that this work circulated through. `history/` documents
+that whole software evolution — and, going further back, an independent
+restoration of Holte's original release by Jens Guenther — as real,
+buildable snapshots rather than just descriptions.
 
 ## Running it
 
