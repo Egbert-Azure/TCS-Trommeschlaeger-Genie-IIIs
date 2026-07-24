@@ -42,18 +42,18 @@ itself. To actually boot the Genie IIIs, you need an emulator:
   reason any of this works cross-platform at all: it builds and runs on
   Windows, Linux, and macOS from one codebase. It emulates the Genie IIIs'
   Western Digital WD1000/1010 hard-disk controller.
-- **[sdltrsOMTI](https://github.com/Egbert-Azure/sdltrsOMTI)** — a fork of
-  sdltrs adding emulation of the *other* hard-disk controller this system
-  supports: the OMTI 5527 SASI/MFM controller (see `src-omti/` and
-  `history/`). This matters specifically if you want to run any of the
-  Seagate ST225/OMTI-based configurations documented in this repo — plain
-  sdltrs can't drive those, only the WD1000/1010 path.
+- **[sdltrs-MultiHDC](https://github.com/Egbert-Azure/sdltrs-MultiHDC)** — a fork of
+  sdltrs adding emulation of the *other two* hard-disk controllers this system
+  supports: the OMTI 5527 SASI/MFM controller and the Xebec S1410 SASI
+  controller (see `src-omti/` and `history/`). This matters if you want to run
+  any of the Seagate ST225/OMTI- or Xebec-based configurations documented in
+  this repo — plain sdltrs can't drive those, only the WD1000/1010 path.
 - **[SDLTRS-Wrapper](https://github.com/Egbert-Azure/SDLTRS-Wrapper)**
-  ("TRS-80 Launcher") — a native macOS front-end wrapping sdltrs/sdltrsOMTI
+  ("TRS-80 Launcher") — a native macOS front-end wrapping sdltrs/sdltrs-MultiHDC
   in a proper Cocoa UI (machine presets, floppy and hard-disk slots, ROM/
   config controls), for when the emulator's own menus aren't what you want.
   It's a launcher, not a separate emulator — Windows and Linux users can
-  just run sdltrs/sdltrsOMTI directly.
+  just run sdltrs/sdltrs-MultiHDC directly.
 
 ## What's in this repo
 
